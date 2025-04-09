@@ -1,0 +1,21 @@
+header{
+    background-color: var(--bg-item);
+    color: var(--font-color-2);
+    height: 60px;
+    padding: 0px 30px 0px 30px;
+}
+
+nav{
+    width: 100%;
+}
+
+#icon p{
+    font-size: 13pt;
+    margin-left: 5px;
+}
+
+.icon{
+    height: 20px;
+    width: 20px;
+    margin: 0px 0px 0px 10px;
+}

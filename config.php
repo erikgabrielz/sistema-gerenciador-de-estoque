@@ -1,20 +1,21 @@
 <?php
+    define("ENVIRONMENT", "development");
+    define("APP_NAME", "ManutençãoPro");
 
-session_start();
+    global $config;
+    $config = array();
 
-define("ENVIRONMENT", "development");
-global $config;
-
-if(ENVIRONMENT == "development"){
-    $config['dbname'] = "stock";
-    $config['dbhost'] = "localhost";
-    $config['dbuser'] = "root";
-    $config['dbpass'] = "";
-}else if (ENVIRONMENT == "production"){
-    // $config['dbname'] = "";
-    // $config['dbhost'] = "localhost";
-    // $config['dbuser'] = "root";
-    // $config['dbpass'] = "";
-}else{
-    print("Erro na configuração com o banco de dados.");
-}
+    if(ENVIRONMENT == 'development'){
+        define("BASE_URL", "https://localhost");
+        $config['dbname'] = 'webservice';
+        $config['host'] = 'localhost';
+        $config['dbuser'] = 'root';
+        $config['dbpass'] = '';
+    }else{
+        define("BASE_URL", "https://localhost");
+        $config['dbname'] = 'webservice';
+        $config['host'] = 'localhost';
+        $config['dbuser'] = 'root';
+        $config['dbpass'] = '';
+    }
+?>

@@ -1,0 +1,82 @@
+:root{
+    --bg-color: #161616;
+    --bg-input: #393939;
+    --bg-button: #000000;
+    --bg-item: #A9A9A9;
+    --font-color-1: #A9A9A9;
+    --font-color-2: #FFF;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--bg-color);
+    font-family: 'Montserrat', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.flex{
+    display: flex;
+}
+
+.center{
+    justify-content: center;
+    align-items: center;
+}
+
+.justify{
+    justify-content: space-between;
+}
+
+.start{
+    justify-content: flex-start;
+}
+
+
+.column{
+    flex-direction: column;
+}
+
+
+.container{
+    max-width: 1200px;
+    margin: auto;
+}
+
+.input {
+    background-color: var(--bg-input);
+    width: 100%;
+    height: 45px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    color: var(--font-color-1);
+    padding: 0px 20px 0px 20px;
+}
+
+.input::placeholder{
+    color: var(--font-color-1);
+}
+
+.icon{
+    width: 30px;
+    height: 30px;
+}
+
+.button{
+    width: 100%;
+    height: 45px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    background-color: var(--bg-button);
+    color: var(--font-color-2);
+    cursor: pointer;
+}
