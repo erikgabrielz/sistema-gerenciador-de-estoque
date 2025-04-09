@@ -7,8 +7,8 @@
 
     <link rel="shortcut icon" href="../assets/media/tool.png" />
 
-    <link rel="stylesheet" type="text/css" href="../css/variables.css">
-    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/variables.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

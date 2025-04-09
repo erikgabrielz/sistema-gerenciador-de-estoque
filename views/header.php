@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
 
-    <link rel="stylesheet" type="text/css" href="../css/variables.css">
-    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/variables.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/header.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/home.css">
 
     <link rel="shortcut icon" href="../assets/media/tool.png" />
 
@@ -16,7 +17,7 @@
 </head>
 <body>
     <header class="flex">
-        <nav class="container flex justify">
+        <nav class="container flex justify wrap">
             <section>
                 <article class="flex center" id="icon">
                     <img class="icon" src="../assets/media/tool.png"/>
@@ -26,8 +27,10 @@
 
             <section>
                 <article class="flex">
-                    <a href="#"><img class="icon" src="../assets/media/config.png"/></a>
-                    <a href="#"><img class="icon" src="../assets/media/config.png"/></a>
+                    <a href="/"><img class="icon" src="../assets/media/home.png"/></a>
+                    <a href="/servicos"><img class="icon" src="../assets/media/clipboard.png"/></a>
+                    <a href="/financeiro"><img class="icon" src="../assets/media/money.png"/></a>
+                    <a href="/configuracoes"><img class="icon" src="../assets/media/config.png"/></a>
                 </article>
             </section>
         </nav>

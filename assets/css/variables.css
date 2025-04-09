@@ -11,6 +11,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 body{
@@ -39,9 +41,12 @@ a{
     justify-content: flex-start;
 }
 
-
 .column{
     flex-direction: column;
+}
+
+.wrap{
+    flex-wrap: wrap;
 }
 
 

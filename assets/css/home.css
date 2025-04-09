@@ -1,0 +1,41 @@
+#home-title, #home-search, #home-items{
+    padding: 0px 35px;
+}
+
+#home-title h1{
+    font-size: 20pt;
+}
+
+#home-title .button{
+    width: 100px;
+}
+
+#home-search .input, #home-items .home-item, #home-title{
+    margin: 20px 0px auto;
+    width: 100%;
+}
+
+.home-item{
+    background-color: var(--bg-item);
+    height: 100px;
+    border-radius: 10px;
+    padding: 0px 15px 0px 15px;
+}
+
+.home-item-title, #home-title h1{
+    color: var(--font-color-2);
+}
+
+.home-item-action{
+    max-width: 70px;
+}
+
+.home-item-action .button{
+    max-height: 30px;
+    margin: 5px 0px 5px 0px;
+}
+
+.home-item .icon{
+    width: 15px;
+    height: 15px;
+}
