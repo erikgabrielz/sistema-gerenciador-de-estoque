@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
 
-    <link rel="stylesheet" type="text/css" href="../assets/css/variables.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/header.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/home.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/variables.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/header.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/home.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/orders.css">
 
-    <link rel="shortcut icon" href="../assets/media/tool.png" />
+    <link rel="shortcut icon" href="<?php echo BASE_URL; ?>/assets/media/tool.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,17 +21,17 @@
         <nav class="container flex justify wrap">
             <section>
                 <article class="flex center" id="icon">
-                    <img class="icon" src="../assets/media/tool.png"/>
+                    <img class="icon" src="<?php echo BASE_URL; ?>/assets/media/tool.png"/>
                     <p><?php echo APP_NAME; ?></p>
                 </article>
             </section>
 
             <section>
                 <article class="flex">
-                    <a href="/"><img class="icon" src="../assets/media/home.png"/></a>
-                    <a href="/servicos"><img class="icon" src="../assets/media/clipboard.png"/></a>
-                    <a href="/financeiro"><img class="icon" src="../assets/media/money.png"/></a>
-                    <a href="/configuracoes"><img class="icon" src="../assets/media/config.png"/></a>
+                    <a href="/"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/home.png"/></a>
+                    <a href="/servicos"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/clipboard.png"/></a>
+                    <a href="/financeiro"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/money.png"/></a>
+                    <a href="/configuracoes"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/config.png"/></a>
                 </article>
             </section>
         </nav>

@@ -6,16 +6,16 @@
     $config = array();
 
     if(ENVIRONMENT == 'development'){
-        define("BASE_URL", "https://localhost");
-        $config['dbname'] = 'webservice';
+        define("BASE_URL", "http://localhost:8080");
+        $config['dbname'] = 'stock';
         $config['host'] = 'localhost';
         $config['dbuser'] = 'root';
         $config['dbpass'] = '';
     }else{
-        define("BASE_URL", "https://localhost");
-        $config['dbname'] = 'webservice';
-        $config['host'] = 'localhost';
-        $config['dbuser'] = 'root';
-        $config['dbpass'] = '';
+        define("BASE_URL", "http://estoque.unaux.com");
+        $config['dbname'] = 'ezyro_38718018_stock';
+        $config['host'] = 'sql210.ezyro.com';
+        $config['dbuser'] = 'ezyro_38718018';
+        $config['dbpass'] = 'f7817e91ff';
     }
 ?>

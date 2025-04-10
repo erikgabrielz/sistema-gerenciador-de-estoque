@@ -1,0 +1,25 @@
+#orders-title, #orders-items{
+    padding: 0px 35px;
+}
+
+#orders-title h1{
+    font-size: 18pt;
+    color: var(--font-color-2);
+}
+
+#orders-title .button{
+    width: 100px;
+}
+
+#orders-items, #orders-title{
+    margin: 20px 0px auto;
+    width: 100%;
+}
+
+#orders-items .item{
+    height: 135px;
+}
+
+#orders-items .item-title{
+    margin-top: 20px;
+}
