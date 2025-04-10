@@ -3,7 +3,7 @@
         public function run(){
             $url = explode("index.php", $_SERVER['PHP_SELF']);
             $url = end($url);
-            
+
             $params = array();
             
             if(isset($url) && !empty($url[0])){

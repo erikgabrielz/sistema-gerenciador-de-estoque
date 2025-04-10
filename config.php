@@ -1,5 +1,5 @@
 <?php
-    define("ENVIRONMENT", "development");
+    define("ENVIRONMENT", "production");
     define("APP_NAME", "ManutençãoPro");
 
     global $config;
