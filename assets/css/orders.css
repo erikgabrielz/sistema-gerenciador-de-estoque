@@ -23,3 +23,16 @@
 #orders-items .item-title{
     margin-top: 20px;
 }
+
+#orders-items .item-action{
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+#orders-items .item-action .button{
+    padding: 0px 25px;
+}
+
+#orders-items .item-action a{
+    margin: 0px 5px;
+}

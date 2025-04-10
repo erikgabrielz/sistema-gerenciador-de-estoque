@@ -15,9 +15,9 @@
                 <p class="item-amount">troca de microfone</p>
                 <p class="item-price">valor do orçamento: R$ 70,00</p>
             </div>
-            <div class="item-action flex center justify">
+            <div class="item-action flex center end">
                 <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/edit.png" /></button></a>
-                <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/trash.png" /></button></a>
+                <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/verification.png" /></button></a>
             </div>
         </div>
 
@@ -27,11 +27,13 @@
                 <p class="item-amount">Troca de tela</p>
                 <p class="item-price">valor do orçamento: R$ 250,00</p>
             </div>
-            <div class="item-action flex">
+
+            <div class="item-action flex center end">
                 <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/edit.png" /></button></a>
-                <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/trash.png" /></button></a>
+                <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/verification.png" /></button></a>
             </div>
         </div>
+        
     </article>
 </section>
 
