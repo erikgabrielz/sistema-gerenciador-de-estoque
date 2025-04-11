@@ -18,8 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<<<<<<< HEAD
-=======
 
     <?php 
         if(!isset($_SESSION['user-logged'])){
@@ -27,7 +25,6 @@
         }
     ?>
 
->>>>>>> 32fdd5b31010be748fa36e8104f172f2fb13d5ed
     <header class="flex">
         <nav class="container flex justify wrap">
             <section>

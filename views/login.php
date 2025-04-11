@@ -15,15 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<<<<<<< HEAD
-=======
     <?php 
         if(isset($_SESSION['user-logged'])){
             header("Location: /");
         }
     ?>
 
->>>>>>> 32fdd5b31010be748fa36e8104f172f2fb13d5ed
     <section class="flex center column container">
         <article class="flex center" id="icon">
             <img class="icon" src="<?php echo BASE_URL; ?>/assets/media/tool.png"/>
@@ -31,11 +28,6 @@
         </article>
 
         <article id="form">
-<<<<<<< HEAD
-            <form method="POST">
-                <input class="input" type="text" name="user" id="user" placeholder="Nome de usuário" />
-                <input class="input"type="password" name="pass" id="pass" placeholder="Senha" />
-=======
             <form id="form-login" action="<?php echo BASE_URL."/login/auth"?> " method="POST">
                 <input class="input" type="text" name="user" id="user" placeholder="Nome de usuário" value="<?php echo isset($_SESSION['input-name']) ? $_SESSION['input-name'] : ""; ?>" maxlength="4" autofocus />
                 <div id="user-message">
@@ -53,18 +45,14 @@
                         }
                     ?>
                 </div>
->>>>>>> 32fdd5b31010be748fa36e8104f172f2fb13d5ed
                 <input class="button"type="submit" value="Iniciar sessão" />
                 <p class="link"><a href="/redefinir">Esqueceu a senha?</a></p>
             </form>
         </article>
     </section>
-<<<<<<< HEAD
-=======
 
     <footer>
         <script src="<?php echo BASE_URL; ?>/assets/js/login.js"></script>
     </footer>
->>>>>>> 32fdd5b31010be748fa36e8104f172f2fb13d5ed
 </body>
 </html>

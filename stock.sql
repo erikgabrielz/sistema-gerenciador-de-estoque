@@ -1,18 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
-<<<<<<< HEAD
--- Tempo de geração: 10/04/2025 às 15:32
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
-=======
--- Tempo de geração: 11/04/2025 às 03:56
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
->>>>>>> 32fdd5b31010be748fa36e8104f172f2fb13d5ed
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -94,13 +79,6 @@ CREATE TABLE `types` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-<<<<<<< HEAD
-  `user` varchar(4) NOT NULL,
-  `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
-=======
   `email` varchar(100) NOT NULL,
   `user` varchar(4) NOT NULL,
   `password` varchar(100) NOT NULL,
@@ -119,7 +97,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `user`, `password`, `level`, `status
 (2, 'Diego M', 'testador@dosistema.com', 'dimi', '$2y$10$WRO9RV7/vMsSsCfuxToJgOHCnRfVBrW3oHduHseYnlTT5B2NMxXti', 0, 1, '2025-04-11 01:52:51', '2025-04-11 01:52:51');
 
 --
->>>>>>> 32fdd5b31010be748fa36e8104f172f2fb13d5ed
 -- Índices para tabelas despejadas
 --
 
@@ -157,13 +134,9 @@ ALTER TABLE `types`
 -- Índices de tabela `users`
 --
 ALTER TABLE `users`
-<<<<<<< HEAD
-  ADD PRIMARY KEY (`id`);
-=======
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `user` (`user`),
   ADD UNIQUE KEY `email` (`email`);
->>>>>>> 32fdd5b31010be748fa36e8104f172f2fb13d5ed
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -203,11 +176,7 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> 32fdd5b31010be748fa36e8104f172f2fb13d5ed
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

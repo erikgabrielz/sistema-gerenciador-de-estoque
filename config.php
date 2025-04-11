@@ -1,5 +1,5 @@
 <?php
-    define("ENVIRONMENT", "production");
+    define("ENVIRONMENT", "development");
     define("APP_NAME", "ManutençãoPro");
 
     global $config;
@@ -7,7 +7,6 @@
 
     if(ENVIRONMENT == 'development'){
         define("BASE_URL", "http://localhost:8080");
-        define("BASE_URL", "http://localhost");
         $config['dbname'] = 'stock';
         $config['host'] = 'localhost';
         $config['dbuser'] = 'root';
