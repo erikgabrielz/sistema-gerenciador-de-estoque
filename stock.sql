@@ -1,3 +1,12 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 11/04/2025 às 21:47
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -23,6 +32,14 @@ CREATE TABLE `brands` (
   `brand` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `brands`
+--
+
+INSERT INTO `brands` (`id`, `brand`) VALUES
+(3, 'Gold Edition'),
+(4, 'Service pack');
+
 -- --------------------------------------------------------
 
 --
@@ -33,6 +50,40 @@ CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `category` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `categories`
+--
+
+INSERT INTO `categories` (`id`, `category`) VALUES
+(5, 'Frontal'),
+(6, 'Sub-placa'),
+(7, 'Bateria'),
+(8, 'Tampa traseira'),
+(9, 'Aro'),
+(10, 'Chassi'),
+(11, 'Carcaça'),
+(12, 'Placa-mãe'),
+(13, 'Câmera');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `extras`
+--
+
+CREATE TABLE `extras` (
+  `id` int(11) NOT NULL,
+  `text` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `extras`
+--
+
+INSERT INTO `extras` (`id`, `text`) VALUES
+(1, 'Com aro'),
+(2, 'Sem aro');
 
 -- --------------------------------------------------------
 
@@ -45,6 +96,14 @@ CREATE TABLE `products` (
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `products`
+--
+
+INSERT INTO `products` (`id`, `name`) VALUES
+(2, 'Redmi note 11'),
+(3, 'Redmi 10C');
+
 -- --------------------------------------------------------
 
 --
@@ -56,8 +115,19 @@ CREATE TABLE `stock` (
   `brand` int(11) NOT NULL,
   `category` int(11) NOT NULL,
   `product` int(11) NOT NULL,
-  `type` int(11) NOT NULL
+  `type` int(11) NOT NULL,
+  `extra` int(11) NOT NULL,
+  `price` double NOT NULL,
+  `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `stock`
+--
+
+INSERT INTO `stock` (`id`, `brand`, `category`, `product`, `type`, `extra`, `price`, `quantity`) VALUES
+(1, 3, 5, 3, 1, 1, 65, 2),
+(2, 4, 5, 2, 1, 2, 65, 1);
 
 -- --------------------------------------------------------
 
@@ -69,6 +139,17 @@ CREATE TABLE `types` (
   `id` int(11) NOT NULL,
   `type` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `types`
+--
+
+INSERT INTO `types` (`id`, `type`) VALUES
+(1, 'LCD'),
+(2, 'OLED'),
+(3, 'AMOLED'),
+(4, 'QLED'),
+(5, 'E Ink');
 
 -- --------------------------------------------------------
 
@@ -113,6 +194,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `extras`
+--
+ALTER TABLE `extras`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `products`
 --
 ALTER TABLE `products`
@@ -122,7 +209,12 @@ ALTER TABLE `products`
 -- Índices de tabela `stock`
 --
 ALTER TABLE `stock`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_brand` (`brand`),
+  ADD KEY `fk_category` (`category`),
+  ADD KEY `fk_product` (`product`),
+  ADD KEY `fk_type` (`type`),
+  ADD KEY `fk_extra` (`extra`);
 
 --
 -- Índices de tabela `types`
@@ -146,37 +238,57 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT de tabela `extras`
+--
+ALTER TABLE `extras`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `types`
 --
 ALTER TABLE `types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `stock`
+--
+ALTER TABLE `stock`
+  ADD CONSTRAINT `fk_brand` FOREIGN KEY (`brand`) REFERENCES `brands` (`id`),
+  ADD CONSTRAINT `fk_category` FOREIGN KEY (`category`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `fk_extra` FOREIGN KEY (`extra`) REFERENCES `extras` (`id`),
+  ADD CONSTRAINT `fk_product` FOREIGN KEY (`product`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `fk_type` FOREIGN KEY (`type`) REFERENCES `types` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
