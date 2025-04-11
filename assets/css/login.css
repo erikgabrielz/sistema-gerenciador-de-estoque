@@ -1,0 +1,48 @@
+body{
+    background-color: var(--bg-color);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container{
+    height: 90vh;
+}
+
+#icon{
+    margin-bottom: 30px;
+}
+
+#icon p{
+    color: var(--font-color-2);
+    font-size: 20pt;
+    margin-left: 10px;
+}
+
+#form{
+    max-width: 450px;
+    width: 80%;
+}
+
+.input{
+    margin-top: 15px;
+}
+
+#user-message, #pass-message{
+    color: var(--font-color-error);
+    font-size: 8pt;
+    margin: 5px 0px 0px 15px;
+}
+
+.button{
+    margin-top: 15px;
+}
+
+.link{
+    text-align: center;
+}
+
+a{  
+    display: block;
+    margin-top: 15px;
+    color: var(--font-color-1);
+    text-align: center;
+}

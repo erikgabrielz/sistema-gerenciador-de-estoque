@@ -1,0 +1,17 @@
+#config-title{
+    padding: 30px 35px;
+}
+
+#config-title h1{
+    font-size: 20pt;
+    color: var(--font-color-2);
+}
+
+#config-form{
+    width: 85%;
+    margin: auto;
+}
+
+.input{
+    margin-bottom: 15px;
+}
