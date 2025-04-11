@@ -7,6 +7,7 @@
 
     if(ENVIRONMENT == 'development'){
         define("BASE_URL", "http://localhost:8080");
+        define("BASE_URL", "http://localhost");
         $config['dbname'] = 'stock';
         $config['host'] = 'localhost';
         $config['dbuser'] = 'root';

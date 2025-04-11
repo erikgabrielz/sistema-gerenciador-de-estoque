@@ -5,6 +5,7 @@
     --bg-item: #A9A9A9;
     --font-color-1: #A9A9A9;
     --font-color-2: #FFF;
+    --font-color-error: rgba(255, 0, 0, 0.5)
 }
 
 *{

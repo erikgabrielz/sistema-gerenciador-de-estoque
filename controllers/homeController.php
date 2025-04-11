@@ -4,5 +4,9 @@
             $data['title'] = "Home - ".APP_NAME;
             $this->loadView("home", $data);
         }
+
+        public function add(){
+            
+        }
     }
 ?>
