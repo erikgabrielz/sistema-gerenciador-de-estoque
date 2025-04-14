@@ -2,7 +2,7 @@
     class homeController extends Controller{
         public function index(){
             $data['title'] = "Home - ".APP_NAME;         
-            $this->loadView("home", $data);
+            $this->loadView("home/home", $data);
         }
 
         public function getStock(){
@@ -19,7 +19,47 @@
 
         public function add(){
             $data['title'] = "Adicionar produto - ".APP_NAME;
-            $this->loadView("addProduct", $data);
+            $this->loadView("home/addProduct", $data);
+        }
+
+        public function edit($id = ""){
+            
+            if(empty($id)){
+                header("Location: index.php");
+            }
+
+            $stock = new Stock();
+            $stock = $stock->getStock($id);
+
+            print_r($stock);
+        }
+
+        public function delete($id = ""){
+            if(empty($id)){
+                header("Location: index.php");
+            }
+            $stock = new Stock();
+        }
+
+        public function sell($id = ""){
+            if(empty($id)){
+                header("Location: index.php");
+            }
+
+            $stock = new Stock();
+            $stock = $stock->sell($id);
+
+            if($stock == false){
+                return json_encode([
+                    "status" => "error",
+                    "message" => "Operação não realizada. Tente novamente!"
+                ]);
+            }else{
+                return json_encode([
+                    "status" => "success",
+                    "message" => $stock
+                ]);
+            }
         }
     }
 ?>

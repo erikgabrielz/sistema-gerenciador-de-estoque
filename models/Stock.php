@@ -2,11 +2,11 @@
 
 class Stock extends Model{
 
-    public function getStock(){
+    public function getStock($id = ""){
 
-        $return = false;
+        $response = false;
 
-        $sql = $this->connect->prepare("
+        $sql = "
         SELECT stock.id, brands.brand, categories.category, products.name, types.type, extras.text as extra, price, quantity
         FROM stock
         INNER JOIN brands on stock.brand = brands.id
@@ -14,16 +14,37 @@ class Stock extends Model{
         INNER JOIN products on stock.product = products.id
         INNER JOIN types on stock.type = types.id
         INNER JOIN extras on stock.extra = extras.id
-        ");
+        ";
+
+        if(!empty($id)){
+            $sql = $sql." WHERE stock.id = ".$id;
+        }
+
+        $sql = $this->connect->prepare($sql);
+
         $sql->execute();
 
         if($sql->rowCount() > 0){
-            $return = $sql->fetchAll();
+            $response = $sql->fetchAll();
         }else{
-            $return = false;
+            $response = false;
         }
 
-        return $return;
+        return $response;
+    }
+
+    public function sell($id){
+        $response = false;
+
+        $sql = $this->connect->prepare("UPDATE `stock` SET `quantity`-= 1 WHERE  id = :id");
+        $sql->bindParam(":id", $id);
+        
+
+        if($sql->execute()){
+            $response = "Operação realizada com sucesso!";
+        }
+
+        return $response;
     }
 
 }
