@@ -29,17 +29,18 @@ document.body.onload = () => {
                     items.innerHTML += `
                     <div class="item flex center justify">
                         <div class="item-desc">
-                            <h3 class="item-title">${item.category} ${item.name}</h3>
+                            <h3 class="item-title">${item.category} ${item.product}</h3>
                             <p>Marca: ${item.brand}</p>
+                            <p>Fornecedor: ${item.supplier}</p>
                             <p>Aro: ${item.extra}</p>
                             <p>Qualidade: ${item.type}</p>
                             ${item.quantity > 0 ? `Quantidade: ${item.quantity}` : `<span style="color: red;">Indisponível no estoque</span>`}
-                            <p>Valor: R$ ${item.price}</p>
+                            ${item.quantity > 0 ? `<p>Valor: R$ ${item.price}</p>` : ""}
                         </div>
                         <div class="item-action">
                             <a href="${BASE_URL}/home/edit/${item.id}"><button class="button"><img class="icon" src="${BASE_URL}/assets/media/edit.png" /></button></a>
-                            <button onclick="confirmAlert('delete', ${item.id}, '${item.category}', '${item.name}')" class="button"><img class="icon" src="${BASE_URL}/assets/media/trash.png" /></button>
-                            <button onclick="confirmAlert('sell', ${item.id}, '${item.category}', '${item.name}')" class="button"><img class="icon" src="${BASE_URL}/assets/media/sell.png" /></button>
+                            <button onclick="confirmAlert('delete', ${item.id}, '${item.category}', '${item.product}')" class="button"><img class="icon" src="${BASE_URL}/assets/media/trash.png" /></button>
+                            <button onclick="confirmAlert('sell', ${item.id}, '${item.category}', '${item.product}')" class="button"><img class="icon" src="${BASE_URL}/assets/media/sell.png" /></button>
                         </div>
                     </div>
                     `;

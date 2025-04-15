@@ -25,20 +25,21 @@
             $data['title'] = "Adicionar produto - ".APP_NAME;
             $data['items'] = [];
             
-            $columns = ["Brand", "Category", "Extra", "Product", "Type"];
+            $data["columns"] = ["Brand", "Category", "Extra", "Product", "Type", "Supplier"];
+            $data["columns_pt"] = ["Marca", "Categoria", "Adicionais", "Modelo do celular", "Tipo", "Fornecedor"];
 
-            for($i = 0; $i < count($columns); $i ++){
+            for($i = 0; $i < count($data["columns"]); $i ++){
                 // Instancia a classe dinamicamente
-                $instances[$i] = new $columns[$i];
+                $instances[$i] = new $data["columns"][$i];
 
                 // Constrói o nome do método dinamicamente
-                $functionName = "get" . $columns[$i];
+                $functionName = "get" . $data["columns"][$i];
 
                 // Chama o método na instância
                 $result = $instances[$i]->$functionName();
 
                 // Opcional: Armazene o resultado se necessário
-                $data["items"][$columns[$i]] = $result;
+                $data["items"][$data["columns"][$i]] = $result;
             }
 
             $this->loadView("home/addProduct", $data);

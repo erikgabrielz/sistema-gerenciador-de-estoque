@@ -7,13 +7,14 @@ class Stock extends Model{
         $response = false;
 
         $sql = "
-        SELECT stock.id, brands.brand, categories.category, products.name, types.type, extras.extra, price, quantity
+        SELECT stock.id, brands.brand, categories.category, products.product, types.type, extras.extra, suppliers.supplier, price, quantity
         FROM stock
         INNER JOIN brands on stock.brand = brands.id
         INNER JOIN categories on stock.category = categories.id
         INNER JOIN products on stock.product = products.id
         INNER JOIN types on stock.type = types.id
         INNER JOIN extras on stock.extra = extras.id
+        INNER JOIN suppliers on stock.supplier = suppliers.id
         ";
 
         if(!empty($id)){

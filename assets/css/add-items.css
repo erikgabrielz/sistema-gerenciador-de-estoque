@@ -6,3 +6,10 @@
 .add-button .button{
     margin: 0px 2.5px 0px 2.5px;
 }
+
+.label{
+    display: inline-block;
+    color: var(--font-color-2);
+    margin-left: 10px;
+    margin-bottom: 5px;
+}

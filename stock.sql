@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/04/2025 às 21:47
+-- Tempo de geração: 15/04/2025 às 21:42
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -74,14 +74,14 @@ INSERT INTO `categories` (`id`, `category`) VALUES
 
 CREATE TABLE `extras` (
   `id` int(11) NOT NULL,
-  `text` text NOT NULL
+  `extra` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `extras`
 --
 
-INSERT INTO `extras` (`id`, `text`) VALUES
+INSERT INTO `extras` (`id`, `extra`) VALUES
 (1, 'Com aro'),
 (2, 'Sem aro');
 
@@ -93,14 +93,14 @@ INSERT INTO `extras` (`id`, `text`) VALUES
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `product` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `products`
 --
 
-INSERT INTO `products` (`id`, `name`) VALUES
+INSERT INTO `products` (`id`, `product`) VALUES
 (2, 'Redmi note 11'),
 (3, 'Redmi 10C');
 
@@ -115,6 +115,7 @@ CREATE TABLE `stock` (
   `brand` int(11) NOT NULL,
   `category` int(11) NOT NULL,
   `product` int(11) NOT NULL,
+  `supplier` int(11) NOT NULL,
   `type` int(11) NOT NULL,
   `extra` int(11) NOT NULL,
   `price` double NOT NULL,
@@ -125,9 +126,31 @@ CREATE TABLE `stock` (
 -- Despejando dados para a tabela `stock`
 --
 
-INSERT INTO `stock` (`id`, `brand`, `category`, `product`, `type`, `extra`, `price`, `quantity`) VALUES
-(1, 3, 5, 3, 1, 1, 65, 2),
-(2, 4, 5, 2, 1, 2, 65, 1);
+INSERT INTO `stock` (`id`, `brand`, `category`, `product`, `supplier`, `type`, `extra`, `price`, `quantity`) VALUES
+(1, 3, 5, 3, 1, 1, 1, 65, 2),
+(2, 4, 5, 2, 1, 1, 2, 65, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `suppliers`
+--
+
+CREATE TABLE `suppliers` (
+  `id` int(11) NOT NULL,
+  `supplier` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `suppliers`
+--
+
+INSERT INTO `suppliers` (`id`, `supplier`) VALUES
+(1, 'King Parts'),
+(2, 'Tussolini (TJ Parts)'),
+(3, 'Planeta Cell'),
+(4, 'Mercado Livre'),
+(5, 'Shopee');
 
 -- --------------------------------------------------------
 
@@ -214,7 +237,14 @@ ALTER TABLE `stock`
   ADD KEY `fk_category` (`category`),
   ADD KEY `fk_product` (`product`),
   ADD KEY `fk_type` (`type`),
-  ADD KEY `fk_extra` (`extra`);
+  ADD KEY `fk_extra` (`extra`),
+  ADD KEY `fk_supplier` (`supplier`);
+
+--
+-- Índices de tabela `suppliers`
+--
+ALTER TABLE `suppliers`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `types`
@@ -265,6 +295,12 @@ ALTER TABLE `stock`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de tabela `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de tabela `types`
 --
 ALTER TABLE `types`
@@ -288,6 +324,7 @@ ALTER TABLE `stock`
   ADD CONSTRAINT `fk_category` FOREIGN KEY (`category`) REFERENCES `categories` (`id`),
   ADD CONSTRAINT `fk_extra` FOREIGN KEY (`extra`) REFERENCES `extras` (`id`),
   ADD CONSTRAINT `fk_product` FOREIGN KEY (`product`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `fk_supplier` FOREIGN KEY (`supplier`) REFERENCES `suppliers` (`id`),
   ADD CONSTRAINT `fk_type` FOREIGN KEY (`type`) REFERENCES `types` (`id`);
 COMMIT;
 
