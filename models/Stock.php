@@ -7,7 +7,7 @@ class Stock extends Model{
         $response = false;
 
         $sql = "
-        SELECT stock.id, brands.brand, categories.category, products.name, types.type, extras.text as extra, price, quantity
+        SELECT stock.id, brands.brand, categories.category, products.name, types.type, extras.extra, price, quantity
         FROM stock
         INNER JOIN brands on stock.brand = brands.id
         INNER JOIN categories on stock.category = categories.id
@@ -55,12 +55,13 @@ class Stock extends Model{
     public function sell($id){
         $response = false;
 
-        $sql = $this->connect->prepare("UPDATE `stock` SET `quantity`-= 1 WHERE  id = :id");
+        $sql = $this->connect->prepare("UPDATE `stock` SET `quantity` = `quantity` - 1 WHERE `id` = :id AND `quantity` > 0");
         $sql->bindParam(":id", $id);
         
 
         if($sql->execute()){
-            $response = "Operação realizada com sucesso!";
+            $response = true;
+            header("Location: /");
         }
 
         return $response;

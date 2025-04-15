@@ -23,7 +23,30 @@
 
         public function add(){
             $data['title'] = "Adicionar produto - ".APP_NAME;
+            $data['items'] = [];
+            
+            $columns = ["Brand", "Category", "Extra", "Product", "Type"];
+
+            for($i = 0; $i < count($columns); $i ++){
+                // Instancia a classe dinamicamente
+                $instances[$i] = new $columns[$i];
+
+                // Constrói o nome do método dinamicamente
+                $functionName = "get" . $columns[$i];
+
+                // Chama o método na instância
+                $result = $instances[$i]->$functionName();
+
+                // Opcional: Armazene o resultado se necessário
+                $data["items"][$columns[$i]] = $result;
+            }
+
             $this->loadView("home/addProduct", $data);
+        }
+
+        public function addProduct(){
+            
+            header("Location: /");
         }
 
         public function edit($id = ""){
@@ -64,20 +87,22 @@
                 header("Location: index.php");
             }
 
-            $stock = new Stock();
-            $stock = $stock->sell($id);
+            $_SESSION['message'] = [
+                "status" => "error",
+                "text" => "Operação não realizada. Tente novamente!"
+            ];
 
-            if($stock == false){
-                return json_encode([
-                    "status" => "error",
-                    "message" => "Operação não realizada. Tente novamente!"
-                ]);
-            }else{
-                return json_encode([
+            $stock = new Stock();
+            $return = $stock->sell($id);
+
+            if($return){
+                $_SESSION['message'] = [
                     "status" => "success",
-                    "message" => $stock
-                ]);
+                    "text" => "Operação realizada com sucesso!"
+                ];
             }
+
+            header("Location: /");
         }
     }
 ?>

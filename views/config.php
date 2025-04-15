@@ -14,7 +14,11 @@
             <input class="button"type="submit" value="Salvar" />
         </form>
     </article>
-    <a href="<?php echo BASE_URL; ?>/login/logout"><button class="button">Sair</button></a>
+    
+    <article class="logout-button">
+        <a href="<?php echo BASE_URL; ?>/login/logout"><button class="button">Sair</button></a>
+    </article>
+
 </section>
 
 <?php include('footer.php'); ?>

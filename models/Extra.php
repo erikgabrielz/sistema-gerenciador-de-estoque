@@ -1,11 +1,11 @@
 <?php
 
-class Brand extends Model{
+class Extra extends Model{
 
-    public function getBrand($id = ""){
+    public function getExtra($id = ""){
         $response = false;
     
-        $sql = $this->connect->prepare("SELECT * FROM brands");
+        $sql = $this->connect->prepare("SELECT * FROM extras");
 
         if(!empty($id)){
             $sql = $sql." WHERE id = ".$id;

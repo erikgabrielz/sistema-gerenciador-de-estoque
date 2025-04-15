@@ -2,21 +2,22 @@
 
 class Product extends Model{
 
-    public function getProducts(){
-
-        $return = false;
-
+    public function getProduct($id = ""){
+        $response = false;
+    
         $sql = $this->connect->prepare("SELECT * FROM products");
-        $sql->bindParam(":user", $user);
-        $sql->execute();
 
-        if($sql->rowCount() > 0){
-            $return = $sql->fetch();
-        }else{
-            $return = false;
+        if(!empty($id)){
+            $sql = $sql." WHERE id = ".$id;
         }
 
-        return $return;
+        $sql->execute();
+    
+        if($sql->rowCount() > 0){
+            $response = $sql->fetchAll();
+        }
+    
+        return $response;
     }
 
 }

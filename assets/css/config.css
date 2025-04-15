@@ -15,3 +15,10 @@
 .input{
     margin-bottom: 15px;
 }
+
+.logout-button{
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    width: 85%;
+}
