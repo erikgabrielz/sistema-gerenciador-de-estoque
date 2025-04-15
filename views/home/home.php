@@ -12,12 +12,20 @@
         <input class="input" id="search" type="search" placeholder="Pesquisar" />
     </article>
 
+    <?php if(isset($_SESSION['message']) && !empty($_SESSION['message']) && $_SESSION['message']['status'] == "success"): ?>
+        <article id="msg-home" class="flex center start success">
+            <?php echo $_SESSION['message']['text']; unset($_SESSION['message']) ?>
+        </article>
+    <?php elseif(isset($_SESSION['message']) && !empty($_SESSION['message']) && $_SESSION['message']['status'] == "error"): ?>
+        <article id="msg-home" class="flex center start error">
+            <?php echo $_SESSION['message']['text']; unset($_SESSION['message']) ?>
+        </article>
+    <?php endif; ?>
+
     <article class="flex center column" id="home-items">
         <div class="item flex center justify">
             <div class="item-desc">
-                <h3 class="item-title">Carregando...</h3>
-                <p class="item-amount">Carregando...</p>
-                <p class="item-price">Carregando...</p>
+                <h3 id="item-title" class="item-title">Carregando<span id="loading"></span></h3>
             </div>
         </div>
     </article>

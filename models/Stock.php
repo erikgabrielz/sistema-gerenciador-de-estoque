@@ -33,6 +33,25 @@ class Stock extends Model{
         return $response;
     }
 
+    public function delete($id){
+        $response = false;
+
+        $sql = $this->connect->prepare("SELECT id FROM stock WHERE id = :id");
+        $sql->bindParam(":id", $id);
+        $sql->execute();
+
+        if($sql->rowCount() > 0){
+            $sql = $this->connect->prepare("DELETE FROM `stock` WHERE id = :id");
+            $sql->bindParam(":id", $id);
+            
+            if($sql->execute()){
+                $response = true;
+            }
+        }
+
+        return $response;
+    }
+
     public function sell($id){
         $response = false;
 

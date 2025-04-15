@@ -6,15 +6,19 @@
         }
 
         public function getStock(){
-            $return = "Nenhum produto encontrado!";
+            $return = [
+                "status" => 204,
+                "data" => "Nenhum produto encontrado!"
+            
+            ];
             $stock = new Stock();
             $stock = $stock->getStock();
 
             if(!empty($stock)){
-                $return = json_encode($stock);
+                $return = $stock;
             }
 
-            echo $return;
+            echo json_encode($return);
         }
 
         public function add(){
@@ -35,10 +39,24 @@
         }
 
         public function delete($id = ""){
-            if(empty($id)){
-                header("Location: index.php");
+            $_SESSION['message'] = [
+                "status" => "error",
+                "text" => "Operação não realizada. Tente novamente!"
+            ];
+
+            if(!empty($id)){
+                $stock = new Stock();
+                $return = $stock->delete($id);
+
+                if($return){
+                    $_SESSION['message'] = [
+                        "status" => "success",
+                        "text" => "Operação realizada com sucesso!"
+                    ];
+                }
             }
-            $stock = new Stock();
+
+            header("Location: /");
         }
 
         public function sell($id = ""){

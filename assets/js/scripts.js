@@ -1,20 +1,27 @@
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "http://localhost";
 
-document.body.onload = (BASE_URL) => {    
-    let list = [];
-    fetch(`${BASE_URL}/home/getStock`)
+document.body.onload = () => {    
+    fetch(`${BASE_URL}/home/getStock`, {
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
     .then(response => {
         if (!response.ok) { // Verifica se a resposta foi bem-sucedida
-        throw new Error(`Erro: ${response.status}`);
+            throw new Error(`Erro: ${response.status}`);
         }
-        return response; // Converte a resposta para JSON
+
+        return response.json(); // Converte a resposta para JSON
     })
     .then(data => {
         let items = document.querySelector("#home-items");
         let searchInput = document.querySelector("#search");
-        list = data;
-
         // Função para renderizar os itens conforme o filtro
+        if(data.status == 204){
+            document.getElementById('item-title').innerHTML = data.data;
+            return;
+        }
+        
         const renderItems = (filteredList) => {
             items.innerHTML = "";
             filteredList.forEach(item => {            
@@ -39,13 +46,13 @@ document.body.onload = (BASE_URL) => {
         };
 
         // Renderizar os itens inicialmente
-        renderItems(list);
+        renderItems(data);
 
         // Adicionar evento de busca dinâmica
         searchInput.addEventListener("input", () => {
             const searchTerms = searchInput.value.toLowerCase().split(' '); // Divide a entrada por espaços
         
-            const filteredList = list.filter(item => 
+            const filteredList = data.filter(item => 
                 searchTerms.every(term => // Verifica se todos os termos se aplicam ao item
                     item.name.toLowerCase().includes(term) ||
                     item.category.toLowerCase().includes(term) ||
@@ -71,24 +78,30 @@ function confirmAlert(action, id, category, name){
         alert = window.confirm(`Tem certeza que deseja excluir o item: ${category} ${name}?`);
 
         if(alert){
-            fetch(`${BASE_URL}/home/delete/${id}`)
-            .then(response => {
-                if (!response.ok) { // Verifica se a resposta foi bem-sucedida
-                throw new Error(`Erro: ${response.status}`);
-                }
-                return response; // Converte a resposta para JSON
-            })
-            .then(data => {
-                console.log(data);
-
-            })
-            .catch(error => {
-                console.error('Erro na requisição:', error)
-            }); // Captura e exibe erros
-            }
+            window.location.href = `${BASE_URL}/home/delete/${id}`;
+        }
     }
 
     if(action == "sell"){
         alert = window.confirm(`Tem certeza que deseja vender um item de: ${category} ${name}?`)
+        if(alert){
+            window.location.href = `${BASE_URL}/home/sell/${id}`;
+        }
     }
+}
+
+const dotsElement = document.getElementById('loading');
+let dots = '';
+setInterval(() => {
+    dots = dots.length < 3 ? dots + '.' : '';
+    dotsElement.textContent = dots;
+}, 200); // Atualiza a cada 500ms
+
+
+let msg = document.querySelector("#msg-home");
+
+if(msg){
+    setInterval(() => {
+        msg.style.display = "none"; 
+    }, 5000)
 }

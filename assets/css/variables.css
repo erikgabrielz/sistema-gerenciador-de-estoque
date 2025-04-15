@@ -117,3 +117,27 @@ a{
     width: 15px;
     height: 15px;
 }
+
+.error{
+    width: 82%;
+    margin: auto;
+    background-color: rgba(255, 0, 0, 0.473);
+    margin-top: 20px;
+    border-radius: 10px;
+    min-height: 40px;
+    color: white;
+    padding: 10px;
+    font-size: 10pt;
+}
+
+.success{
+    width: 82%;
+    margin: auto;
+    background-color: rgba(43, 255, 0, 0.473);
+    margin-top: 20px;
+    border-radius: 10px;
+    min-height: 40px;
+    color: white;
+    padding: 10px;
+    font-size: 10pt;
+}
