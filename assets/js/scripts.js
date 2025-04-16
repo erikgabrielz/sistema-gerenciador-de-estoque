@@ -1,5 +1,13 @@
 const BASE_URL = "http://localhost:8080";
 
+var userLogged = false;
+
+let cookies = document.cookie.split('; ')
+
+if(cookies[1]){
+    userLogged = cookies[1].slice(-1) == 1;
+}
+
 document.body.onload = () => {    
     if(window.location.href == `${BASE_URL}/` || window.location.href == `${BASE_URL}/home`){
         fetch(`${BASE_URL}/home/getStock`, {
@@ -37,11 +45,11 @@ document.body.onload = () => {
                             ${item.quantity > 0 ? `Quantidade: ${item.quantity}` : `<span style="color: red;">Indisponível no estoque</span>`}
                             ${item.quantity > 0 ? `<p>Valor: R$ ${item.price}</p>` : ""}
                         </div>
-                        <div class="item-action">
+                        ${userLogged ? `<div class="item-action">
                             <a href="${BASE_URL}/home/edit/${item.id}"><button class="button"><img class="icon" src="${BASE_URL}/assets/media/edit.png" /></button></a>
                             <button onclick="confirmAlert('delete', ${item.id}, '${item.category}', '${item.product}')" class="button"><img class="icon" src="${BASE_URL}/assets/media/trash.png" /></button>
-                            <button onclick="confirmAlert('sell', ${item.id}, '${item.category}', '${item.product}')" class="button"><img class="icon" src="${BASE_URL}/assets/media/sell.png" /></button>
-                        </div>
+                            ${item.quantity > 0 ? `<button onclick="confirmAlert('sell', ${item.id}, '${item.category}', '${item.product}')" class="button"><img class="icon" src="${BASE_URL}/assets/media/sell.png" /></button>` : ``}
+                        </div>` : ""}
                     </div>
                     `;
                 });
@@ -56,7 +64,7 @@ document.body.onload = () => {
             
                 const filteredList = data.filter(item => 
                     searchTerms.every(term => // Verifica se todos os termos se aplicam ao item
-                        item.name.toLowerCase().includes(term) ||
+                        item.product.toLowerCase().includes(term) ||
                         item.category.toLowerCase().includes(term) ||
                         item.brand.toLowerCase().includes(term) ||
                         item.extra.toLowerCase().includes(term) ||
@@ -109,4 +117,17 @@ if(msg){
     setInterval(() => {
         msg.style.display = "none"; 
     }, 5000)
+}
+
+if(window.location.href == `${BASE_URL}/home/add`){
+    function formatarValor(valor) {
+        if (!valor) return "R$ 0,00";
+    
+        let numero = parseFloat(valor.replace(/\D/g, "")) / 100; // Remove caracteres não numéricos e ajusta
+        return numero.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+    
+    document.getElementById("price").addEventListener("input", function (e) {
+        e.target.value = formatarValor(e.target.value); // Aplica a formatação
+    });
 }

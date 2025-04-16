@@ -16,6 +16,12 @@
     -webkit-box-sizing: border-box;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 body{
     background-color: var(--bg-color);
     font-family: 'Montserrat', sans-serif;
@@ -24,6 +30,10 @@ body{
 a{
     text-decoration: none;
     outline: none;
+}
+
+footer{
+    margin-top: 40px;
 }
 
 .flex{
@@ -119,7 +129,7 @@ a{
 }
 
 .error{
-    width: 82%;
+    width: 100%;
     margin: auto;
     background-color: rgba(255, 0, 0, 0.473);
     margin-top: 20px;
@@ -131,7 +141,7 @@ a{
 }
 
 .success{
-    width: 82%;
+    width: 100%;
     margin: auto;
     background-color: rgba(43, 255, 0, 0.473);
     margin-top: 20px;

@@ -28,7 +28,7 @@
             }
 
             if(password_verify($pass, $user['password'])){
-                $_SESSION['user-logged'] = true;
+                setcookie('user-logged', true, time() + 7200, "/");
                 $_SESSION['user'] = $user['user'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['name'] = $user['name'];
@@ -42,8 +42,10 @@
         }
 
         public function logout(){
+            setcookie("user-logged", false, time() - 7200, '/');
+            unset($_COOKIE["user-logged"]);
+            unset($_COOKIE["level"]);
             $_SESSION = array();
-            session_destroy();
             header("Location: /");
         }
     }

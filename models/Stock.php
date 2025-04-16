@@ -34,6 +34,27 @@ class Stock extends Model{
         return $response;
     }
 
+    public function add($data){
+        $response = false;
+
+        $sql = $this->connect->prepare("INSERT INTO stock VALUES (:brand, :category, :extra, :product, :type, :category, :supplier, :quantity, :price)");
+        
+        foreach($data as $key => $value){
+            $key = ":".strtolower($key);
+            if($key == ":price"){
+                $value = substr($value, 4);
+                $value = str_replace(",", ".", $value);
+            }
+            $sql->bindValue($key, $value);
+        }
+
+        if($sql->execute()){
+            $response = true;
+        }
+
+        return $response;
+    }
+
     public function delete($id){
         $response = false;
 

@@ -17,7 +17,12 @@
                         <option value="<?php echo $items[$columns[$i]][$c]["id"]; ?>"><?php echo $items[$columns[$i]][$c][strtolower($columns[$i])]; ?></option>  
                     <?php endfor; ?>
                 </select>
+                <div class="message" id="<?php echo $columns[$i]; ?>-message"></div>
             <?php endfor; ?>
+            <label class="label" for="quantity">Quantidade</label>
+            <input class="input" type="number" id="quantity" name="quantity" min="0" max="1000" />
+            <label class="label" for="price">Valor unitário</label>
+            <input class="input" type="tel" id="price" name="price" value="R$ 0,00"/>
 
             <div class="flex justify add-button">
                 <input class="button" type="reset" value="Limpar formulário" />

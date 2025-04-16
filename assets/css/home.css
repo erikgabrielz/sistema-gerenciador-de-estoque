@@ -15,3 +15,7 @@
     margin: 20px 0px auto;
     width: 100%;
 }
+
+.item-action .button{
+    width: 100px;
+}

@@ -5,7 +5,9 @@
 <section class="container">
     <article class="flex justify center" id="home-title">
         <h1>Estoque</h1>
-        <a href="/home/add"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/add.png" /></button></a>
+        <?php if(isset($_COOKIE['user-logged']) && $_COOKIE['user-logged']): ?>
+            <a href="/home/add"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/add.png" /></button></a>
+        <?php endif; ?>
     </article>
 
     <article class="flex center" id="home-search">

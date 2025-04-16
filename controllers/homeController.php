@@ -46,7 +46,30 @@
         }
 
         public function addProduct(){
+            $_SESSION['message'] = [
+                "status" => "error",
+                "text" => "Operação não realizada. Tente novamente!"
+            ];
+
+            $columns = ["Brand", "Category", "Extra", "Product", "Type", "Supplier", "quantity", "price"];
+            $data = [];
             
+            for($i = 0; $i < count($columns); $i++){
+                if(isset($_POST[$columns[$i]]) && !empty($_POST[$columns[$i]])){
+                    $data[$columns[$i]] = addslashes($_POST[$columns[$i]]);
+                }
+            }
+            
+            $stock = new Stock();
+            $return = $stock->add($data);
+            
+            if($return){
+                $_SESSION['message'] = [
+                    "status" => "success",
+                    "text" => "Operação realizada com sucesso!"
+                ];
+            }
+
             header("Location: /");
         }
 
