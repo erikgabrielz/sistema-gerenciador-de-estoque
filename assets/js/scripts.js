@@ -1,11 +1,21 @@
-const BASE_URL = "http://estoque.unaux.com";
+const BASE_URL = "http://localhost:8080";
 
 var userLogged = false;
 
 let cookies = document.cookie.split('; ')
 
-if(cookies[1]){
-    userLogged = cookies[1].slice(-1) == 1;
+console.log(cookies)
+
+if(cookies.indexOf("user-logged")){
+
+    cookies.map(item => {
+        if(item.slice(0, -2) == "user-logged"){
+            userLogged = item.slice(-1) == 1; 
+        }
+    })
+
+    
+    
 }
 
 document.body.onload = () => {    
