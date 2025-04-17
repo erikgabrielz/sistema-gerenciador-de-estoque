@@ -37,7 +37,7 @@ class Stock extends Model{
     public function add($data){
         $response = false;
 
-        $sql = $this->connect->prepare("INSERT INTO stock VALUES (:brand, :category, :extra, :product, :type, :category, :supplier, :quantity, :price)");
+        $sql = $this->connect->prepare("INSERT INTO stock VALUES (default, :brand, :category, :product, :supplier, :type, :extra, :price, :quantity)");
         
         foreach($data as $key => $value){
             $key = ":".strtolower($key);
@@ -46,6 +46,7 @@ class Stock extends Model{
                 $value = str_replace(",", ".", $value);
             }
             $sql->bindValue($key, $value);
+            echo $key." - ".$value." - OK <br>";
         }
 
         if($sql->execute()){

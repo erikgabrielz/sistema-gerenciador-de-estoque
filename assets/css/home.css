@@ -1,17 +1,12 @@
-#home-title, #home-search, #home-items{
+#home-search, #home-items{
     padding: 0px 35px;
 }
 
-#home-title h1{
-    font-size: 20pt;
-    color: var(--font-color-2);
-}
-
-#home-title .button{
+.item-action{
     width: 100px;
 }
 
-#home-search .input, #home-items, #home-title{
+#home-search .input, #home-items{
     margin: 20px 0px auto;
     width: 100%;
 }
@@ -19,3 +14,4 @@
 .item-action .button{
     width: 100px;
 }
+

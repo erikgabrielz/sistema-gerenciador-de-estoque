@@ -20,7 +20,7 @@
 </head>
 <body>
     <header class="flex">
-        <nav class="container flex justify wrap">
+        <nav class="container flex center justify wrap">
             <section>
                 <article class="flex center" id="icon">
                     <img class="icon" src="<?php echo BASE_URL; ?>/assets/media/tool.png"/>
@@ -50,7 +50,7 @@
                         <a href="/configuracoes"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/config.png"/></a>
                     <?php elseif (!$userLogged): ?>
                         <section>
-                            <article class="flex">
+                            <article>
                                 <a href="/login"><button class="button">Entrar</button></a>
                             </article>
                         </section>

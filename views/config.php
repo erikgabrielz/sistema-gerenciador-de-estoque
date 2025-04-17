@@ -1,8 +1,13 @@
-<?php include('header.php'); ?>
+<?php
+    require_once("views/header.php");
+?>
+
 
 <section class="container">
-    <article id="config-title">
-        <h1>Configurações</h1>
+    <article class="title-container">
+        <div class="flex justify center title">
+            <h1>Configurações</h1>
+        </div>
     </article>
 
     <article id="config-form">
@@ -21,4 +26,6 @@
 
 </section>
 
-<?php include('footer.php'); ?>
+<?php
+    require_once("views/header.php");
+?>

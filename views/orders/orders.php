@@ -3,9 +3,11 @@
 ?>
 
 <section class="container">
-    <article class="flex justify center" id="orders-title">
-        <h1>Ordens de Serviço</h1>
-        <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/add.png" /></button></a>
+    <article class="title-container">
+        <div class="flex justify center title">
+            <h1>Ordens de Serviço</h1>
+            <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/add.png" /></button></a>
+        </div>
     </article>
 
     <article class="flex center column" id="orders-items">

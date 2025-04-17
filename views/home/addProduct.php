@@ -2,22 +2,25 @@
     require_once("views/header.php");
 ?>
 
-<article id="config-title">
-    <h1>Adicionar ao estoque</h1>
-</article>
+<section class="container">
+    <article class="title-container">
+        <div class="flex justify center title">
+            <h1>Adicionar ao estoque</h1>
+            <a href="/database"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/data-management.png" /></button></a>
+        </div>
+    </article>
 
-<section class="flex center column container">
     <article id="form">
         <form id="form-items" action="<?php echo BASE_URL."/home/addProduct"?>" method="POST">
-            <?php for($i = 0; $i < count($columns); $i++): ?>
-                <label class="label" for="<?php echo $columns[$i]; ?>"><?php echo $columns_pt[$i]; ?></label>
-                <select class="input" id="<?php echo $columns[$i]; ?>" name="<?php echo $columns[$i]; ?>">
+            <?php for($i = 0; $i < count(TABLES); $i++): ?>
+                <label class="label" for="<?php echo TABLES[$i]; ?>"><?php echo TABLES_PT[$i]; ?></label>
+                <select class="input" id="<?php echo TABLES[$i]; ?>" name="<?php echo TABLES[$i]; ?>">
                     <option value="0" selected>Selecione uma opção</option>
-                    <?php for($c = 0; $c < count($items[$columns[$i]]); $c++): ?>
-                        <option value="<?php echo $items[$columns[$i]][$c]["id"]; ?>"><?php echo $items[$columns[$i]][$c][strtolower($columns[$i])]; ?></option>  
+                    <?php for($c = 0; $c < count($items[TABLES[$i]]); $c++): ?>
+                        <option value="<?php echo $items[TABLES[$i]][$c]["id"]; ?>"><?php echo $items[TABLES[$i]][$c][strtolower(TABLES[$i])]; ?></option>  
                     <?php endfor; ?>
                 </select>
-                <div class="message" id="<?php echo $columns[$i]; ?>-message"></div>
+                <div class="message" id="<?php echo TABLES[$i]; ?>-message"></div>
             <?php endfor; ?>
             <label class="label" for="quantity">Quantidade</label>
             <input class="input" type="number" id="quantity" name="quantity" min="0" max="1000" />

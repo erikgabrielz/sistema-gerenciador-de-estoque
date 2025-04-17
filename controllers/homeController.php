@@ -24,22 +24,20 @@
         public function add(){
             $data['title'] = "Adicionar produto - ".APP_NAME;
             $data['items'] = [];
-            
-            $data["columns"] = ["Brand", "Category", "Extra", "Product", "Type", "Supplier"];
-            $data["columns_pt"] = ["Marca", "Categoria", "Adicionais", "Modelo do celular", "Tipo", "Fornecedor"];
 
-            for($i = 0; $i < count($data["columns"]); $i ++){
+            for($i = 0; $i < count(TABLES); $i ++){
                 // Instancia a classe dinamicamente
-                $instances[$i] = new $data["columns"][$i];
+                $className = TABLES[$i];
+                $instances[$i] = new $className();
 
                 // Constrói o nome do método dinamicamente
-                $functionName = "get" . $data["columns"][$i];
+                $functionName = "get" . TABLES[$i];
 
                 // Chama o método na instância
                 $result = $instances[$i]->$functionName();
 
                 // Opcional: Armazene o resultado se necessário
-                $data["items"][$data["columns"][$i]] = $result;
+                $data["items"][TABLES[$i]] = $result;
             }
 
             $this->loadView("home/addProduct", $data);
@@ -51,7 +49,10 @@
                 "text" => "Operação não realizada. Tente novamente!"
             ];
 
-            $columns = ["Brand", "Category", "Extra", "Product", "Type", "Supplier", "quantity", "price"];
+            $columns = TABLES;
+            array_push($columns, "quantity");
+            array_push($columns, "price");
+
             $data = [];
             
             for($i = 0; $i < count($columns); $i++){

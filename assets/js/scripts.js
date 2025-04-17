@@ -111,13 +111,13 @@ if(window.location.href == `${BASE_URL}/` || window.location.href == `${BASE_URL
 }
 
 
-let msg = document.querySelector("#msg-home");
+// let msg = document.querySelector(".alert-msg");
 
-if(msg){
-    setInterval(() => {
-        msg.style.display = "none"; 
-    }, 5000)
-}
+// if(msg){
+//     setInterval(() => {
+//         msg.style.display = "none"; 
+//     }, 5000)
+// }
 
 if(window.location.href == `${BASE_URL}/home/add`){
     function formatarValor(valor) {

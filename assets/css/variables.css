@@ -1,3 +1,4 @@
+
 :root{
     --bg-color: #161616;
     --bg-input: #393939;
@@ -64,10 +65,27 @@ footer{
     flex-wrap: wrap;
 }
 
-
 .container{
     max-width: 1200px;
     margin: auto;
+}
+
+.title-container{
+    width: 85%;
+    margin: auto;
+}
+
+.title{
+    padding: 30px 0px 30px 10px;
+}
+
+.title h1{
+    font-size: 18pt;
+    color: var(--font-color-2);
+}
+
+.title button{
+    width: 100px;
 }
 
 .input {
@@ -99,6 +117,7 @@ footer{
     background-color: var(--bg-button);
     color: var(--font-color-2);
     cursor: pointer;
+    min-width: 100px;
 }
 
 .item{
@@ -128,26 +147,21 @@ footer{
     height: 15px;
 }
 
-.error{
-    width: 100%;
-    margin: auto;
-    background-color: rgba(255, 0, 0, 0.473);
-    margin-top: 20px;
+.alert-msg div{
+    width: 85%;
     border-radius: 10px;
+    margin: auto;
+    margin-top: 20px;
     min-height: 40px;
     color: white;
     padding: 10px;
     font-size: 10pt;
 }
 
-.success{
-    width: 100%;
-    margin: auto;
+.error div{
+    background-color: rgba(255, 0, 0, 0.473);
+}
+
+.success div{
     background-color: rgba(43, 255, 0, 0.473);
-    margin-top: 20px;
-    border-radius: 10px;
-    min-height: 40px;
-    color: white;
-    padding: 10px;
-    font-size: 10pt;
 }

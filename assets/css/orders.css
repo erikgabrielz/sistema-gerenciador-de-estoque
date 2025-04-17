@@ -1,17 +1,9 @@
-#orders-title, #orders-items{
+#orders-items{
     padding: 0px 35px;
 }
 
-#orders-title h1{
-    font-size: 18pt;
-    color: var(--font-color-2);
-}
 
-#orders-title .button{
-    width: 100px;
-}
-
-#orders-items, #orders-title{
+#orders-items{
     margin: 20px 0px auto;
     width: 100%;
 }

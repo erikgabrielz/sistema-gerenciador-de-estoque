@@ -2,6 +2,11 @@
     define("ENVIRONMENT", "development");
     define("APP_NAME", "ManutençãoPro");
 
+    //tables
+
+    define("TABLES", ["Brand", "Category", "Extra", "Product", "Type", "Supplier"]);
+    define("TABLES_PT", ["Marca", "Categoria", "Adicionais", "Modelo do celular", "Tipo", "Fornecedor"]);
+
     global $config;
     $config = array();
 
