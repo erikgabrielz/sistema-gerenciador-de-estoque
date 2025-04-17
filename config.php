@@ -1,5 +1,5 @@
 <?php
-    define("ENVIRONMENT", "development");
+    define("ENVIRONMENT", "production");
     define("APP_NAME", "ManutençãoPro");
 
     //tables
@@ -16,7 +16,7 @@
         $config['host'] = 'localhost';
         $config['dbuser'] = 'root';
         $config['dbpass'] = '';
-    }else{
+    }elseif(ENVIRONMENT == 'production'){
         define("BASE_URL", "http://estoque.unaux.com");
         $config['dbname'] = 'ezyro_38718018_stock';
         $config['host'] = 'sql210.ezyro.com';

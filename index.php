@@ -6,7 +6,7 @@
         if(strpos($class, "Controller") && file_exists("controllers/".$class.".php")){
             require_once("controllers/".$class.".php");
         }elseif(file_exists("models/".$class.".php")){
-            require_once("Models/".$class.".php");
+            require_once("models/".$class.".php");
         }elseif(file_exists("system/".$class.".php")){
             require_once("system/".$class.".php");
         }
