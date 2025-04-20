@@ -1,4 +1,4 @@
-const BASE_URL = "http://estoque.unaux.com";
+const BASE_URL = "http://localhost";
 
 var userLogged = false;
 
@@ -44,11 +44,11 @@ document.body.onload = () => {
                         <div class="item-desc">
                             <h3 class="item-title">${item.category} ${item.product}</h3>
                             <p>Marca: ${item.brand}</p>
-                            <p>Fornecedor: ${item.supplier}</p>
-                            <p>Aro: ${item.extra}</p>
-                            <p>Qualidade: ${item.type}</p>
+                            ${item.supplier != "Não se aplica" ? `<p>Fornecedor: ${item.supplier}</p>` : ``}
+                            ${item.extra != "Não se aplica" ? `<p>Aro: ${item.extra}</p>` : ``}
+                            ${item.type != "Não se aplica" ? ` <p>Qualidade: ${item.type}</p>` : ``}
                             ${item.quantity > 0 ? `Quantidade: ${item.quantity}` : `<span style="color: red;">Indisponível no estoque</span>`}
-                            ${item.quantity > 0 ? `<p>Valor: R$ ${item.price}</p>` : ""}
+                            ${item.quantity > 0 ? `<p>Valor: R$ ${item.price.toFixed(2).replace(".", ",")}</p>` : ""}
                         </div>
                         ${userLogged ? `<div class="item-action">
                             <a href="${BASE_URL}/home/edit/${item.id}"><button class="button"><img class="icon" src="${BASE_URL}/assets/media/edit.png" /></button></a>
@@ -125,6 +125,21 @@ if(msg){
 }
 
 if(window.location.href == `${BASE_URL}/home/add`){
+    function formatarValor(valor) {
+        if (!valor) return "R$ 0,00";
+    
+        let numero = parseFloat(valor.replace(/\D/g, "")) / 100; // Remove caracteres não numéricos e ajusta
+        return numero.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+    
+    document.getElementById("price").addEventListener("input", function (e) {
+        e.target.value = formatarValor(e.target.value); // Aplica a formatação
+    });
+}
+
+console.log(window.location.href);
+
+if(window.location.href.indexOf(`${BASE_URL}/home/edit`) != -1){
     function formatarValor(valor) {
         if (!valor) return "R$ 0,00";
     

@@ -46,8 +46,32 @@ class Stock extends Model{
                 $value = str_replace(",", ".", $value);
             }
             $sql->bindValue($key, $value);
-            echo $key." - ".$value." - OK <br>";
         }
+
+        if($sql->execute()){
+            $response = true;
+        }
+
+        return $response;
+    }
+
+    public function save($data){
+        $response = false;
+
+        $id = $data['id'];
+        array_shift($data);
+        
+        $sql = $this->connect->prepare("UPDATE stock SET brand=:brand, category=:category, product=:product, supplier=:supplier, type=:type, extra=:extra, price=:price, quantity=:quantity WHERE id = :id");
+        
+        foreach($data as $key => $value){
+            $key = ":".strtolower($key);
+            if($key == ":price"){
+                $value = substr($value, 4);
+                $value = str_replace(",", ".", $value);
+            }
+            $sql->bindValue($key, $value);
+        }
+        $sql->bindParam(":id", $id);
 
         if($sql->execute()){
             $response = true;

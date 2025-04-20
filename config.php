@@ -1,17 +1,20 @@
 <?php
-    define("ENVIRONMENT", "production");
+    define("ENVIRONMENT", "development");
     define("APP_NAME", "ManutençãoPro");
 
     //tables
 
+
     define("TABLES", ["Brand", "Category", "Extra", "Product", "Type", "Supplier"]);
+    define("TABLES_DB", ["brands", "categories", "extras", "products", "types", "suppliers"]);
     define("TABLES_PT", ["Marca", "Categoria", "Adicionais", "Modelo do celular", "Tipo", "Fornecedor"]);
+    define("STOCK_COLUMNS", ["brand", "category", "extra", "product", "type", "supplier", "price", "quantity"]);
 
     global $config;
     $config = array();
 
     if(ENVIRONMENT == 'development'){
-        define("BASE_URL", "http://localhost:8080");
+        define("BASE_URL", "http://localhost");
         $config['dbname'] = 'stock';
         $config['host'] = 'localhost';
         $config['dbuser'] = 'root';

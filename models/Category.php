@@ -19,4 +19,36 @@ class Category extends Model{
     
         return $response;
     }
+
+    public function add($category){
+        $response = false;
+
+        $sql = $this->connect->prepare("INSERT INTO categories VALUES (default, :category)");
+        $sql->bindValue(":category", $category);
+
+        if($sql->execute()){
+            $response = true;
+        }
+
+        return $response;
+    }
+
+    public function delete($id){
+        $response = false;
+
+        $sql = $this->connect->prepare("SELECT id FROM categories WHERE id = :id");
+        $sql->bindParam(":id", $id);
+        $sql->execute();
+
+        if($sql->rowCount() > 0){
+            $sql = $this->connect->prepare("DELETE FROM categories WHERE id = :id");
+            $sql->bindParam(":id", $id);
+            
+            if($sql->execute()){
+                $response = true;
+            }
+        }
+
+        return $response;
+    }
 }
