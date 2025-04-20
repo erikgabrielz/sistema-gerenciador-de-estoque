@@ -27,12 +27,6 @@
         </article>
     <?php endif; ?>
 
-        
-
-        
-
-    
-
     <article class="flex center column" id="home-items">
         <div class="item flex center justify">
             <div class="item-desc">

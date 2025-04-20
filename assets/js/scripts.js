@@ -137,8 +137,6 @@ if(window.location.href == `${BASE_URL}/home/add`){
     });
 }
 
-console.log(window.location.href);
-
 if(window.location.href.indexOf(`${BASE_URL}/home/edit`) != -1){
     function formatarValor(valor) {
         if (!valor) return "R$ 0,00";

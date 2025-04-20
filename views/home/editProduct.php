@@ -20,7 +20,6 @@
                         <option value="<?php echo $items[TABLES[$i]][$c]["id"]; ?>" <?php if($items[TABLES[$i]][$c][STOCK_COLUMNS[$i]] == $item[0][STOCK_COLUMNS[$i]]) { echo "selected"; }; ?>><?php echo $items[TABLES[$i]][$c][strtolower(TABLES[$i])]; ?></option>  
                     <?php endfor; ?>
                 </select>
-                <div class="message" id="<?php echo TABLES[$i]; ?>-message"></div>
             <?php endfor; ?>
             <label class="label" for="quantity">Quantidade</label>
             <input class="input" type="number" id="quantity" name="quantity" min="0" max="1000" value="<?php echo $item[0]["quantity"]; ?>" />
