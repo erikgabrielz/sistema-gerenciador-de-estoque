@@ -16,4 +16,21 @@ class User extends Model{
 
         return $return;
     }
+
+    public function update($data){
+        $response = false;
+
+        print_r($data);
+        exit();
+        
+        // $sql = $this->connect->prepare("UPDATE users SET `password` = :pass, email = :email, updated_at = NOW() WHERE user = :user");
+        
+        // $sql->bindValue("");
+    
+        // if($sql->execute()){
+        //     $response = true;
+        // }
+
+        return $response;
+    }
 }
