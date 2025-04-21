@@ -50,11 +50,20 @@
             ];
 
             $data = [];
-            
+
+            $keys = array_keys($_POST);
+            $lowerKeys = array_map(function($key) {
+                return lcfirst($key);
+            }, $keys);
+
+            $_POST = array_combine($lowerKeys, $_POST);
+
             for($i = 0; $i < count(STOCK_COLUMNS); $i++){
                 if(isset($_POST[STOCK_COLUMNS[$i]]) && !empty($_POST[STOCK_COLUMNS[$i]])){
                     $data[STOCK_COLUMNS[$i]] = addslashes($_POST[STOCK_COLUMNS[$i]]);
                 }
+
+                
 
                 if($_POST[STOCK_COLUMNS[$i]] == 0){
                     $data[STOCK_COLUMNS[$i]] = 1;
