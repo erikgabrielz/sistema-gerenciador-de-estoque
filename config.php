@@ -1,5 +1,5 @@
 <?php
-    define("ENVIRONMENT", "production");
+    define("ENVIRONMENT", "development");
     define("APP_NAME", "ManutençãoPro");
 
     //tables

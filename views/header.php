@@ -30,14 +30,16 @@
 
             <?php
                 $atual_page = $_SERVER['REQUEST_URI'];
-
-                // Verifica se o usuário está autenticado
                 $userLogged = isset($_COOKIE['user-logged']);
 
-                if (!$userLogged && $atual_page !== "/") {
-                    // Se o usuário **não** estiver logado e **não** estiver na página inicial, redireciona para login
+                if($atual_page == "/?i=1"){
+                    header("Location: /");
+                    exit();
+                }
+
+                if (!$userLogged && $atual_page != "/") {                    
                     header("Location: /login");
-                    exit(); // Sempre bom incluir exit() após um redirecionamento
+                    exit();
                 }
             ?>
 
