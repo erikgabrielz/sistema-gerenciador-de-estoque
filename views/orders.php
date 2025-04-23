@@ -3,11 +3,9 @@
 ?>
 
 <section class="container">
-    <article class="title-container">
-        <div class="flex justify center title">
-            <h1>Ordens de Serviço</h1>
-            <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/add.png" /></button></a>
-        </div>
+    <article class="flex justify center" id="orders-title">
+        <h1>Ordens de Serviço</h1>
+        <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/add.png" /></button></a>
     </article>
 
     <article class="flex center column" id="orders-items">
@@ -35,6 +33,7 @@
                 <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/verification.png" /></button></a>
             </div>
         </div>
+        
     </article>
 </section>
 

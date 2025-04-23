@@ -1,4 +1,3 @@
-
 :root{
     --bg-color: #161616;
     --bg-input: #393939;
@@ -53,6 +52,7 @@ footer{
 .start{
     justify-content: flex-start;
 }
+
 .end{
     justify-content: flex-end;
 }
@@ -165,3 +165,4 @@ footer{
 .success div{
     background-color: rgba(43, 255, 0, 0.473);
 }
+

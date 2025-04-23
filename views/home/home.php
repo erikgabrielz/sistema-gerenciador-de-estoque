@@ -16,7 +16,6 @@
         <input class="input" id="search" type="search" placeholder="Pesquisar" />
     </article>
 
-
     <?php if(isset($_SESSION['message']) && !empty($_SESSION['message']) && $_SESSION['message']['status'] == "success"): ?>
         <article id="home-msg" class="alert-msg success">
             <div><?php echo $_SESSION['message']['text']; unset($_SESSION['message']); ?></div>
@@ -26,12 +25,6 @@
             <div><?php echo $_SESSION['message']['text']; unset($_SESSION['message']); ?></div>
         </article>
     <?php endif; ?>
-
-        
-
-        
-
-    
 
     <article class="flex center column" id="home-items">
         <div class="item flex center justify">

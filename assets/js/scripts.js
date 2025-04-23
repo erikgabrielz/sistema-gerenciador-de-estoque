@@ -1,7 +1,6 @@
 const BASE_URL = "http://localhost:8080";
 
 var userLogged = false;
-
 let cookies = document.cookie.split('; ')
 
 if(cookies.indexOf("user-logged")){
@@ -24,7 +23,6 @@ document.body.onload = () => {
             if (!response.ok) { // Verifica se a resposta foi bem-sucedida
                 throw new Error(`Erro: ${response.status}`);
             }
-    
             return response.json(); // Converte a resposta para JSON
         })
         .then(data => {
@@ -35,7 +33,7 @@ document.body.onload = () => {
                 document.getElementById('item-title').innerHTML = data.data;
                 return;
             }
-            
+
             const renderItems = (filteredList) => {
                 items.innerHTML = "";
                 filteredList.forEach(item => {            
@@ -44,11 +42,11 @@ document.body.onload = () => {
                         <div class="item-desc">
                             <h3 class="item-title">${item.category} ${item.product}</h3>
                             <p>Marca: ${item.brand}</p>
-                            <p>Fornecedor: ${item.supplier}</p>
-                            <p>Aro: ${item.extra}</p>
-                            <p>Qualidade: ${item.type}</p>
+                            ${item.supplier != "Não se aplica" ? `<p>Fornecedor: ${item.supplier}</p>` : ``}
+                            ${item.extra != "Não se aplica" ? `<p>Aro: ${item.extra}</p>` : ``}
+                            ${item.type != "Não se aplica" ? ` <p>Qualidade: ${item.type}</p>` : ``}
                             ${item.quantity > 0 ? `Quantidade: ${item.quantity}` : `<span style="color: red;">Indisponível no estoque</span>`}
-                            ${item.quantity > 0 ? `<p>Valor: R$ ${item.price}</p>` : ""}
+                            ${item.quantity > 0 ? `<p>Valor: R$ ${item.price.toFixed(2).replace(".", ",")}</p>` : ""}
                         </div>
                         ${userLogged ? `<div class="item-action">
                             <a href="${BASE_URL}/home/edit/${item.id}"><button class="button"><img class="icon" src="${BASE_URL}/assets/media/edit.png" /></button></a>
@@ -59,14 +57,14 @@ document.body.onload = () => {
                     `;
                 });
             };
-    
+
             // Renderizar os itens inicialmente
             renderItems(data);
-    
+
             // Adicionar evento de busca dinâmica
             searchInput.addEventListener("input", () => {
                 const searchTerms = searchInput.value.toLowerCase().split(' '); // Divide a entrada por espaços
-            
+
                 const filteredList = data.filter(item => 
                     searchTerms.every(term => // Verifica se todos os termos se aplicam ao item
                         item.product.toLowerCase().includes(term) ||
@@ -75,8 +73,8 @@ document.body.onload = () => {
                         item.extra.toLowerCase().includes(term) ||
                         item.type.toLowerCase().includes(term)
                     )
-                );
-            
+                );            
+
                 renderItems(filteredList);
             });
         })
@@ -84,31 +82,37 @@ document.body.onload = () => {
             console.error('Erro na requisição:', error)
         }); // Captura e exibe erros
     }
+
 }
+
 
 function confirmAlert(action, id, category, name){
     let alert;
 
     if(action == "delete"){
-
         alert = window.confirm(`Tem certeza que deseja excluir o item: ${category} ${name}?`);
 
         if(alert){
             window.location.href = `${BASE_URL}/home/delete/${id}`;
         }
+
     }
 
     if(action == "sell"){
         alert = window.confirm(`Tem certeza que deseja vender um item de: ${category} ${name}?`)
+
         if(alert){
             window.location.href = `${BASE_URL}/home/sell/${id}`;
         }
     }
 }
 
+
+
 if(window.location.href == `${BASE_URL}/` || window.location.href == `${BASE_URL}/home`){
     const dotsElement = document.getElementById('loading');
     let dots = '';
+
     setInterval(() => {
         dots = dots.length < 3 ? dots + '.' : '';
         dotsElement.textContent = dots;
@@ -127,12 +131,29 @@ if(msg){
 if(window.location.href == `${BASE_URL}/home/add`){
     function formatarValor(valor) {
         if (!valor) return "R$ 0,00";
-    
         let numero = parseFloat(valor.replace(/\D/g, "")) / 100; // Remove caracteres não numéricos e ajusta
         return numero.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
+
     
     document.getElementById("price").addEventListener("input", function (e) {
         e.target.value = formatarValor(e.target.value); // Aplica a formatação
     });
+
+}
+
+
+
+if(window.location.href.indexOf(`${BASE_URL}/home/edit`) != -1){
+    
+    function formatarValor(valor) {
+        if (!valor) return "R$ 0,00";
+        let numero = parseFloat(valor.replace(/\D/g, "")) / 100; // Remove caracteres não numéricos e ajusta
+        return numero.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    document.getElementById("price").addEventListener("input", function (e) {
+        e.target.value = formatarValor(e.target.value); // Aplica a formatação
+    });
+
 }

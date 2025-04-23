@@ -4,5 +4,5 @@
             $data['title'] = "Financeiro - ".APP_NAME;
             $this->loadView("finance/finance", $data);
         }
+
     }
-?>

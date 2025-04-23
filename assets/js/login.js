@@ -3,6 +3,7 @@ let errorColor = "var(--font-color-error)";
 function validateField(input, minLength, maxLength, message) {
     const { id, value } = input;
     const messageElement = document.querySelector(`#${id}-message`);
+
     let isValid = value.length >= minLength && value.length <= maxLength;
 
     input.style.border = isValid ? "none" : `1px solid ${errorColor}`;
@@ -13,11 +14,11 @@ function validateField(input, minLength, maxLength, message) {
         addCSS.id = `${id}-placeholder-style`;
         document.body.append(addCSS);
         addCSS.innerHTML = `#${id}::placeholder { color: ${errorColor}; }`;
-
         messageElement.innerHTML = message;
     } else {
         messageElement.innerHTML = "";
     }
+
     return isValid;
 }
 

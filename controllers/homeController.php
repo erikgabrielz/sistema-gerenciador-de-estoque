@@ -9,8 +9,8 @@
             $return = [
                 "status" => 204,
                 "data" => "Nenhum produto encontrado!"
-            
             ];
+
             $stock = new Stock();
             $stock = $stock->getStock();
 
@@ -49,21 +49,28 @@
                 "text" => "Operação não realizada. Tente novamente!"
             ];
 
-            $columns = TABLES;
-            array_push($columns, "quantity");
-            array_push($columns, "price");
-
             $data = [];
-            
-            for($i = 0; $i < count($columns); $i++){
-                if(isset($_POST[$columns[$i]]) && !empty($_POST[$columns[$i]])){
-                    $data[$columns[$i]] = addslashes($_POST[$columns[$i]]);
+
+            $keys = array_keys($_POST);
+            $lowerKeys = array_map(function($key) {
+                return lcfirst($key);
+            }, $keys);
+
+            $_POST = array_combine($lowerKeys, $_POST);
+
+            for($i = 0; $i < count(STOCK_COLUMNS); $i++){
+                if(isset($_POST[STOCK_COLUMNS[$i]]) && !empty($_POST[STOCK_COLUMNS[$i]])){
+                    $data[STOCK_COLUMNS[$i]] = addslashes($_POST[STOCK_COLUMNS[$i]]);
+                }
+
+                if($_POST[STOCK_COLUMNS[$i]] == 0){
+                    $data[STOCK_COLUMNS[$i]] = 1;
                 }
             }
-            
+
             $stock = new Stock();
             $return = $stock->add($data);
-            
+
             if($return){
                 $_SESSION['message'] = [
                     "status" => "success",
@@ -75,15 +82,67 @@
         }
 
         public function edit($id = ""){
-            
+            $data['title'] = "Editar item - ".APP_NAME;
+
             if(empty($id)){
                 header("Location: index.php");
             }
 
-            $stock = new Stock();
-            $stock = $stock->getStock($id);
+            for($i = 0; $i < count(TABLES); $i ++){
+                // Instancia a classe dinamicamente
+                $className = TABLES[$i];
+                $instances[$i] = new $className();
+                // Constrói o nome do método dinamicamente
+                $functionName = "get" . TABLES[$i];
+                // Chama o método na instância
+                $result = $instances[$i]->$functionName();
+                // Opcional: Armazene o resultado se necessário
+                $data["items"][TABLES[$i]] = $result;
+            }
 
-            print_r($stock);
+            $stock = new Stock();
+            $data["item"] = $stock->getStock($id);
+
+            $this->loadView("home/editProduct", $data);
+        }
+
+        public function update(){
+            $_SESSION['message'] = [
+                "status" => "error",
+                "text" => "Operação não realizada. Tente novamente!"
+            ];
+
+            $data = [];
+            $data["id"] = addslashes($_POST['id']);
+
+            $keys = array_keys($_POST);
+            $lowerKeys = array_map(function($key) {
+                return lcfirst($key);
+            }, $keys);
+
+            $_POST = array_combine($lowerKeys, $_POST);
+
+            for($i = 0; $i < count(STOCK_COLUMNS); $i++){ 
+                if(isset($_POST[STOCK_COLUMNS[$i]]) && !empty($_POST[STOCK_COLUMNS[$i]])){
+                    $data[STOCK_COLUMNS[$i]] = addslashes($_POST[STOCK_COLUMNS[$i]]);
+                }
+
+                if($_POST[STOCK_COLUMNS[$i]] == 0){
+                    $data[STOCK_COLUMNS[$i]] = 1;
+                }
+            }
+
+            $stock = new Stock();
+            $return = $stock->save($data);            
+
+            if($return){
+                $_SESSION['message'] = [
+                    "status" => "success",
+                    "text" => "Operação realizada com sucesso!"
+                ];
+            }
+
+            header("Location: /");
         }
 
         public function delete($id = ""){

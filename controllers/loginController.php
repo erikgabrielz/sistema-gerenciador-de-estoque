@@ -10,7 +10,6 @@
             $pass = addslashes($_POST['pass']);
 
             $userModel = new User();
-
             $user = $userModel->getUser($userInput);
 
             $_SESSION['input-name'] = "";
@@ -45,7 +44,6 @@
             setcookie("user-logged", false, time() - 7200, '/');
             unset($_COOKIE["user-logged"]);
             unset($_COOKIE["level"]);
-            $_SESSION = array();
             header("Location: /");
         }
     }

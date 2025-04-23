@@ -29,6 +29,7 @@
 
         <article id="form">
             <form id="form-login" action="<?php echo BASE_URL."/login/auth"?> " method="POST">
+                
                 <input class="input" type="text" name="user" id="user" placeholder="Nome de usuário" value="<?php echo isset($_SESSION['input-name']) ? $_SESSION['input-name'] : ""; ?>" maxlength="4" autofocus />
                 <div id="user-message">
                     <?php
@@ -37,6 +38,7 @@
                         }
                     ?>
                 </div>
+
                 <input class="input" type="password" name="pass" id="pass" placeholder="Senha" maxlength="8" />
                 <div id="pass-message">
                     <?php
@@ -45,6 +47,7 @@
                         }
                     ?>
                 </div>
+
                 <input class="button"type="submit" value="Iniciar sessão" />
                 <p class="link"><a href="/redefinir">Esqueceu a senha?</a></p>
             </form>
