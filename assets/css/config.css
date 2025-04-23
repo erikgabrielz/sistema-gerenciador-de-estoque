@@ -3,8 +3,8 @@
     margin: auto;
 }
 
-.input{
-    margin-bottom: 15px;
+#config-form .input, #config-form .button{
+    margin-top: 15px;
 }
 
 .logout-button{
@@ -14,3 +14,8 @@
     width: 85%;
 }
 
+#user-message, #pass-message{
+    color: var(--font-color-error);
+    font-size: 8pt;
+    margin: 5px 0px 0px 15px;
+}

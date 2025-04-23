@@ -3,9 +3,7 @@ let errorColor = "var(--font-color-error)";
 function validateField(input, minLength, maxLength, message) {
     const { id, value } = input;
     const messageElement = document.querySelector(`#${id}-message`);
-
     let isValid = value.length >= minLength && value.length <= maxLength;
-
     input.style.border = isValid ? "none" : `1px solid ${errorColor}`;
     input.style.color = isValid ? "var(--font-color-1)" : errorColor;
 
@@ -21,6 +19,8 @@ function validateField(input, minLength, maxLength, message) {
 
     return isValid;
 }
+
+
 
 function addValidation(input, minLength, maxLength, message) {
     input.addEventListener("input", () => validateField(input, minLength, maxLength, message));
