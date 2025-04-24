@@ -20,20 +20,31 @@
     <?php endif; ?>
 
     <article id="config-form">
-        <form method="POST" action="<?php echo BASE_URL; ?>/configuracoes/updateUser">
-            <input type="hidden" name="id" id="id" value="<?php echo $_COOKIE['id']; ?>" />
+        <form method="POST" id="email-from" action="<?php echo BASE_URL; ?>/configuracoes/updateUser">
+            <input type="hidden" name="id" value="<?php echo $_COOKIE['id']; ?>" />
+            
+            <label class="label" for="user">Nome de usuário</label>
             <input class="input" type="text" name="user" id="user" placeholder="Nome de usuário" disabled value="<?php echo $_COOKIE['user']; ?>"/>
             
+            <label class="label" for="email">E-mail</label>
             <input class="input" type="email" name="email" id="email" placeholder="E-mail" value="<?php echo $_COOKIE['email']; ?>"/>
-            <div id="email-message"></div>
+            <div class="validate-message" id="email-message"></div>
             
-            <input class="input" type="password" name="password" id="password" placeholder="Nova senha" maxlength="8"/>
-            <div id="pass-message"></div>
+            <input class="button" type="submit" value="Alterar e-mail" />
+        </form>
+
+        <form method="POST" id="password-from" action="<?php echo BASE_URL; ?>/configuracoes/updateUser">
+            <input type="hidden" name="id" value="<?php echo $_COOKIE['id']; ?>" />
             
-            <input class="input" type="password" name="confirm-password" id="confirm-password" placeholder="confirme a nova senha" maxlength="8" />
-            <div id="confirm-pass-message"></div>
+            <label class="label" for="password">Nova senha</label>
+            <input class="input" type="password" name="password" id="password" maxlength="8"/>
+            <div class="validate-message" id="password-message"></div>
             
-            <input class="button" type="submit" value="Salvar" />
+            <label class="label" for="confirm-password">Confirme a nova senha</label>
+            <input class="input" type="password" name="confirm-password" id="confirm-password" maxlength="8" />
+            <div class="validate-message" id="confirm-password-message"></div>
+            
+            <input class="button" type="submit" value="Alterar senha" />
         </form>
     </article>
 

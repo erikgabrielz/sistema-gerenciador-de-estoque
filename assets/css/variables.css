@@ -99,6 +99,14 @@ footer{
     padding: 0px 20px 0px 20px;
 }
 
+form > :last-child{
+    margin-top: 15px;
+}
+
+label{
+    margin-top: 15px;
+}
+
 .input::placeholder{
     color: var(--font-color-1);
 }
@@ -166,3 +174,8 @@ footer{
     background-color: rgba(43, 255, 0, 0.473);
 }
 
+.validate-message{
+    color: var(--font-color-error);
+    font-size: 8pt;
+    margin: 5px 0px 0px 15px;
+}

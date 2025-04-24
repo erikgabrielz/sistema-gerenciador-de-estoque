@@ -6,8 +6,6 @@
         }
 
         public function updateUser(){
-            $response = false;
-            
             $_SESSION['message'] = [
                 "status" => "error",
                 "text" => "Operação não realizada. Tente novamente!"
@@ -30,22 +28,26 @@
                 if(isset($_POST['confirm-password']) && !empty($_POST['confirm-password'])){
                     $confirm_password = addslashes($_POST['confirm-password']);
                 }
-            }else{
-                header("Location: /configuracoes");
-                exit();
+
+                if($password != $confirm_password){
+                    $_SESSION['message']['text'] = "As senhas não conferem.";
+                    header("Location: /configuracoes");
+                    exit();
+                }
+    
+                $password = password_hash(addslashes($_POST['password']), PASSWORD_DEFAULT);
             }
-
-
-            if($password != $confirm_password){
-                $_SESSION['message']['text'] = "As senhas não conferem.";
-                header("Location: /configuracoes");
-                exit();
-            }
-
-            $password = password_hash(addslashes($_POST['password']), PASSWORD_DEFAULT);
+            
 
             $user = new User();
-            $return = $user->updateUser($id, $email, $password);
+            
+            if(!empty($email)){
+                $return = $user->updateEmail($id, $email);
+            }
+
+            if(!empty($password)){
+                $return = $user->updatePassword($id, $password);
+            }
 
             if($return){
                 $_SESSION['message'] = [
@@ -55,8 +57,6 @@
             }
 
             header("Location: /configuracoes");
-
-            return $response;
         }
     }
 ?>
