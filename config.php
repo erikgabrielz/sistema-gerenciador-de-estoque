@@ -12,13 +12,13 @@
 
     if(ENVIRONMENT == 'development'){
         define("BASE_URL", "http://localhost:8080");
-        $config['dbname'] = 'stock';
+        $config['dbname'] = 'warehouse';
         $config['host'] = 'localhost';
         $config['dbuser'] = 'root';
         $config['dbpass'] = '';
     }elseif(ENVIRONMENT == 'production'){
         define("BASE_URL", "http://estoque.unaux.com");
-        $config['dbname'] = 'ezyro_38718018_stock';
+        $config['dbname'] = 'ezyro_38718018_warehouse';
         $config['host'] = 'sql210.ezyro.com';
         $config['dbuser'] = 'ezyro_38718018';
         $config['dbpass'] = 'f7817e91ff';

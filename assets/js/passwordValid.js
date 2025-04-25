@@ -60,23 +60,25 @@ function addValidation(input) {
     input.addEventListener("change", () => validateField(input));
 }
 
-addValidation(email);
-addValidation(password);
-addValidation(confirmPassword);
+if(window.location.href == `${BASE_URL}/configuracoes`){
+    addValidation(email);
+    addValidation(password);
+    addValidation(confirmPassword);
 
-document.querySelector("#password-form").addEventListener("submit", (event) => {
-    const isPassValid = validateField(password);
-    const isConfirmPassValid = validateField(confirmPassword);
-
-    if (!isPassValid || !isConfirmPassValid) {
-        event.preventDefault();
-    }
-});
-
-document.querySelector("#email-form").addEventListener("submit", (event) => {
-    const isEmailValid = validateField(email);
-
-    if (!isEmailValid) {
-        event.preventDefault();
-    }
-});
+    document.querySelector("#password-form").addEventListener("submit", (event) => {
+        const isPassValid = validateField(password);
+        const isConfirmPassValid = validateField(confirmPassword);
+    
+        if (!isPassValid || !isConfirmPassValid) {
+            event.preventDefault();
+        }
+    });
+    
+    document.querySelector("#email-form").addEventListener("submit", (event) => {
+        const isEmailValid = validateField(email);
+    
+        if (!isEmailValid) {
+            event.preventDefault();
+        }
+    });
+}

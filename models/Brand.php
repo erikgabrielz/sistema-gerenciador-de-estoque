@@ -25,7 +25,7 @@
         public function add($brand){
             $response = false;
 
-            $sql = $this->connect->prepare("INSERT INTO brand VALUES (default, :brand)");
+            $sql = $this->connect->prepare("INSERT INTO brands VALUES (default, :brand)");
             $sql->bindValue(":brand", $brand);
 
             if($sql->execute()){
@@ -40,12 +40,12 @@
         public function delete($id){
             $response = false;
 
-            $sql = $this->connect->prepare("SELECT id FROM brand WHERE id = :id");
+            $sql = $this->connect->prepare("SELECT id FROM brands WHERE id = :id");
             $sql->bindParam(":id", $id);
             $sql->execute();
 
             if($sql->rowCount() > 0){
-                $sql = $this->connect->prepare("DELETE FROM brand WHERE id = :id");
+                $sql = $this->connect->prepare("DELETE FROM brands WHERE id = :id");
                 $sql->bindParam(":id", $id);
 
                 if($sql->execute()){

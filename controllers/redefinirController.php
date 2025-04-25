@@ -1,9 +1,13 @@
 <?php
     class redefinirController extends Controller{
         public function index(){
-            // $data['title'] = "Login - ManutençãoPro";
-            // $this->loadView("login", $data);
-            echo "Página redefinir senha";
+            $data['title'] = "Login - ".APP_NAME;
+            $this->loadView("login/resetPassword", $data);
+        }
+
+        public function updatePassword(){
+            $data['title'] = "Login - ".APP_NAME;
+            $this->loadView("login/updatePassword", $data);
         }
     }
 ?>

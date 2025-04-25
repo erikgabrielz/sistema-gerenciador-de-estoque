@@ -16,7 +16,8 @@ document.body.onload = () => {
     if(window.location.href == `${BASE_URL}/` || window.location.href == `${BASE_URL}/home`){
         fetch(`${BASE_URL}/home/getStock`, {
             headers: {
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'text/html; charset=utf8',
             }
         })
         .then(response => {
