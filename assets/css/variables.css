@@ -179,3 +179,7 @@ label{
     font-size: 8pt;
     margin: 5px 0px 0px 15px;
 }
+
+.invalid-placeholder::placeholder {
+    color: var(--font-color-error);
+}

@@ -28,10 +28,10 @@
         </article>
 
         <article id="form">
-            <form id="form-login" action="<?php echo BASE_URL."/login/auth"?> " method="POST">
+            <form id="form-updatePassword" action="<?php echo BASE_URL."/login/auth"?> " method="POST" valid="true">
                 
                 <input class="input" type="password" name="password" id="password" placeholder="Nova senha" maxlength="8" />
-                <div id="user-message">
+                <div class="validate-message" id="password-message">
                     <?php
                         if(isset($_SESSION['password-message'])){
                             echo $_SESSION['password-message'];
@@ -40,7 +40,7 @@
                 </div>
 
                 <input class="input" type="password" name="confirm-password" id="confirm-password" placeholder="Confirme a nova senha" maxlength="8" />
-                <div id="pass-message">
+                <div class="validate-message" id="confirm-password-message">
                     <?php
                         if(isset($_SESSION['confirm-password-message'])){
                             echo $_SESSION['confirm-password-message'];
@@ -56,6 +56,7 @@
     </section>
 
     <footer>
+        <script src="<?php echo BASE_URL; ?>/assets/js/config.js"></script>
         <script src="<?php echo BASE_URL; ?>/assets/js/passwordValid.js"></script>
     </footer>
 </body>

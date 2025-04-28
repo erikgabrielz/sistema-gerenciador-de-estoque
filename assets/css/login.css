@@ -26,12 +26,6 @@ body{
     margin: 10px 0px 0px 0px;
 }
 
-#user-message, #pass-message{
-    color: var(--font-color-error);
-    font-size: 8pt;
-    margin: 5px 0px 0px 15px;
-}
-
 .button{
     margin-top: 15px;
 }

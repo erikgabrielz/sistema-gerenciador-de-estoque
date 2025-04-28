@@ -28,10 +28,10 @@
         </article>
 
         <article id="form">
-            <form id="form-login" action="<?php echo BASE_URL."/login/auth"?> " method="POST">
+            <form id="form-reset" action="<?php echo BASE_URL."/login/auth"?> " method="POST" valid="true">
                 
                 <input class="input" type="text" name="user" id="user" placeholder="Nome de usuário" value="<?php echo isset($_SESSION['input-name']) ? $_SESSION['input-name'] : ""; ?>" maxlength="4" />
-                <div id="user-message">
+                <div class="validate-message" id="user-message">
                     <?php
                         if(isset($_SESSION['user-message'])){
                             echo $_SESSION['user-message'];
@@ -40,7 +40,7 @@
                 </div>
 
                 <input class="input" type="email" name="email" id="email" placeholder="E-mail" autocomplete="off" />
-                <div id="pass-message">
+                <div class="validate-message" id="email-message">
                     <?php
                         if(isset($_SESSION['email-message'])){
                             echo $_SESSION['email-message'];
@@ -56,7 +56,8 @@
     </section>
 
     <footer>
-        <script src="<?php echo BASE_URL; ?>/assets/js/login.js"></script>
+        <script src="<?php echo BASE_URL; ?>/assets/js/config.js"></script>
+        <script src="<?php echo BASE_URL; ?>/assets/js/ValidateInputs.js"></script>
     </footer>
 </body>
 </html>

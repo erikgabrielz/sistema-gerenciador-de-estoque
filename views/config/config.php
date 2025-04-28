@@ -20,7 +20,7 @@
     <?php endif; ?>
 
     <article id="config-form">
-        <form method="POST" id="email-form" action="<?php echo BASE_URL; ?>/configuracoes/updateUser">
+        <form method="POST" id="form-email" action="<?php echo BASE_URL; ?>/configuracoes/updateUser" valid="true">
             <input type="hidden" name="id" value="<?php echo $_COOKIE['id']; ?>" />
             
             <label class="label" for="user">Nome de usuário</label>
@@ -33,7 +33,7 @@
             <input class="button" type="submit" value="Alterar e-mail" />
         </form>
 
-        <form method="POST" id="password-form" action="<?php echo BASE_URL; ?>/configuracoes/updateUser">
+        <form method="POST" id="form-password" action="<?php echo BASE_URL; ?>/configuracoes/updateUser" valid="true">
             <input type="hidden" name="id" value="<?php echo $_COOKIE['id']; ?>" />
             
             <label class="label" for="password">Nova senha</label>

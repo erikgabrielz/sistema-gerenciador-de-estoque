@@ -7,14 +7,14 @@
 
         public function auth(){
             $userInput = addslashes($_POST['user']);
-            $pass = addslashes($_POST['pass']);
+            $pass = addslashes($_POST['password']);
 
             $userModel = new User();
             $user = $userModel->getUser($userInput);
 
             $_SESSION['input-name'] = "";
             $_SESSION['user-message'] = "";
-            $_SESSION['pass-message'] = "";
+            $_SESSION['password-message'] = "";
 
             if($user == false){
                 $_SESSION['input-name'] = $userInput;
@@ -35,7 +35,7 @@
                 header("Location: /");
             }else{
                 $_SESSION['input-name'] = $userInput;
-                $_SESSION['pass-message'] = "Senha incorreta!"; 
+                $_SESSION['password-message'] = "Senha incorreta!"; 
                 header("Location: /login");
             }
         }

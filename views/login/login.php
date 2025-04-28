@@ -28,10 +28,10 @@
         </article>
 
         <article id="form">
-            <form id="form-login" action="<?php echo BASE_URL."/login/auth"?> " method="POST">
+            <form id="form-login" action="<?php echo BASE_URL."/login/auth"?> " method="POST" valid="true">
                 
                 <input class="input" type="text" name="user" id="user" placeholder="Nome de usuário" value="<?php echo isset($_SESSION['input-name']) ? $_SESSION['input-name'] : ""; ?>" maxlength="4" />
-                <div id="user-message">
+                <div class="validate-message" id="user-message">
                     <?php
                         if(isset($_SESSION['user-message'])){
                             echo $_SESSION['user-message'];
@@ -39,23 +39,24 @@
                     ?>
                 </div>
 
-                <input class="input" type="password" name="pass" id="pass" placeholder="Senha" maxlength="8" />
-                <div id="pass-message">
+                <input class="input" type="password" name="password" id="password" placeholder="Senha" maxlength="8" />
+                <div class="validate-message" id="password-message">
                     <?php
-                        if(isset($_SESSION['pass-message'])){
-                            echo $_SESSION['pass-message'];
+                        if(isset($_SESSION['password-message'])){
+                            echo $_SESSION['password-message'];
                         }
                     ?>
                 </div>
 
-                <input class="button"type="submit" value="Iniciar sessão" />
+                <input class="button" type="submit" value="Iniciar sessão" />
                 <p class="link"><a href="/redefinir">Esqueceu a senha?</a></p>
             </form>
         </article>
     </section>
 
     <footer>
-        <script src="<?php echo BASE_URL; ?>/assets/js/login.js"></script>
+        <script src="<?php echo BASE_URL; ?>/assets/js/config.js"></script>
+        <script src="<?php echo BASE_URL; ?>/assets/js/ValidateInputs.js"></script>
     </footer>
 </body>
 </html>
