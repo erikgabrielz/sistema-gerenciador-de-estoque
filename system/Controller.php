@@ -12,7 +12,7 @@
                 $session = new Session();
                 $session = $session->getSession($_COOKIE["token"]);
 
-                if($session){
+                if($session && $session["ip"] == CLIENT_IP){
                     $response = true;
                     $_SESSION['id'] = $session['id'];
                     $_SESSION["user-logged"] = $session['user'];
