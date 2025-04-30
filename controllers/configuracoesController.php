@@ -23,13 +23,6 @@
                 "text" => "Operação não realizada. Tente novamente!"
             ];
 
-            if(isset($_POST['id']) && !empty($_POST['id']) && $_POST['id'] == $_COOKIE['id']){
-                $id = addslashes($_POST['id']);
-            }else{
-                header("Location: /configuracoes");
-                exit();
-            }
-
             if(isset($_POST['email']) && !empty($_POST['email'])){
                 $email = addslashes($_POST['email']);
             }
@@ -54,11 +47,11 @@
             $user = new User();
             
             if(!empty($email)){
-                $return = $user->updateEmail($id, $email);
+                $return = $user->updateEmail($_SESSION['id'], $email);
             }
 
             if(!empty($password)){
-                $return = $user->updatePassword($id, $password);
+                $return = $user->updatePassword($_SESSION['id'], $password);
             }
 
             if($return){

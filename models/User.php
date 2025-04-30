@@ -21,33 +21,12 @@
             $response = false;
 
             $sql = $this->connect->prepare("UPDATE users SET `email` = :email, modified = NOW() WHERE id = :id");
-
             $sql->bindParam(":id", $id);
             $sql->bindParam(":email", $email);
 
             if($sql->execute()){
                 $response = true;
-                
-                $user = $_COOKIE["user"];
-                $name = $_COOKIE["name"];
-
-                setcookie("user-logged", false, time() - 7200, '/');
-                setcookie('id', "", time() - 7200, "/");
-                setcookie('user', "", time() - 7200, "/");
-                setcookie('email', "", time() - 7200, "/");
-                setcookie('name', "", time() - 7200, "/");
-
-                unset($_COOKIE["user-logged"]);
-                unset($_COOKIE["id"]);
-                unset($_COOKIE["user"]);
-                unset($_COOKIE["email"]);
-                unset($_COOKIE["name"]);
-
-                setcookie('user-logged', true, time() + 7200, "/");
-                setcookie('id', $id, time() + 7200, "/");
-                setcookie('user', $user, time() + 7200, "/");
-                setcookie('email', $email, time() + 7200, "/");
-                setcookie('name', $name, time() + 7200, "/");                
+                $_SESSION['email'] = $email;
             }
 
             return $response;
