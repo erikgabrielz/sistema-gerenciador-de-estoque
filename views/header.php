@@ -29,29 +29,14 @@
                 </article>
             </section>
 
-            <?php
-                $atual_page = $_SERVER['REQUEST_URI'];
-                $userLogged = isset($_COOKIE['user-logged']);
-
-                if($atual_page == "/?i=1"){
-                    header("Location: /");
-                    exit();
-                }
-
-                if (!$userLogged && $atual_page != "/") {                    
-                    header("Location: /login");
-                    exit();
-                }
-            ?>
-
             <section>
                 <article class="flex">
-                    <?php if ($userLogged): ?>
+                    <?php if (isset($_SESSION['user-logged']) && !empty($_SESSION['user-logged'])): ?>
                         <a href="/"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/home.png"/></a>
                         <a href="/servicos"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/clipboard.png"/></a>
                         <a href="/financeiro"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/money.png"/></a>
                         <a href="/configuracoes"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/config.png"/></a>
-                    <?php elseif (!$userLogged): ?>
+                    <?php else: ?>
                         <section>
                             <article>
                                 <a href="/login"><button class="button">Entrar</button></a>

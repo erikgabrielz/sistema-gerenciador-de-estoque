@@ -16,7 +16,7 @@
 </head>
 <body>
     <?php 
-        if(isset($_COOKIE['user-logged'])){
+        if(isset($_SESSION['user-logged'])){
             header("Location: /");
         }
     ?>

@@ -6,12 +6,13 @@
     define("TABLES", ["Brand", "Category", "Extra", "Product", "Type", "Supplier"]);
     define("TABLES_PT", ["Marca", "Categoria", "Adicionais", "Modelo do celular", "Tipo", "Fornecedor"]);
     define("STOCK_COLUMNS", ["brand", "category", "extra", "product", "type", "supplier", "price", "quantity"]);
+    DEFINE("CLIENT_IP", isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']));
 
     global $config;
     $config = array();
 
     if(ENVIRONMENT == 'development'){
-        define("BASE_URL", "http://localhost:8080");
+        define("BASE_URL", "http://localhost");
         $config['dbname'] = 'warehouse';
         $config['host'] = 'localhost';
         $config['dbuser'] = 'root';

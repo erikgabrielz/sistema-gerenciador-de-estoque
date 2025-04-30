@@ -27,6 +27,16 @@
             <p><?php echo APP_NAME; ?></p>
         </article>
 
+        <?php if(isset($_SESSION['message']) && !empty($_SESSION['message']) && $_SESSION['message']['status'] == "success"): ?>
+            <article id="home-msg" class="alert-msg success">
+                <div><?php echo $_SESSION['message']['text']; unset($_SESSION['message']); ?></div>
+            </article>
+        <?php elseif(isset($_SESSION['message']) && !empty($_SESSION['message']) && $_SESSION['message']['status'] == "error"): ?>
+            <article id="home-msg" class="alert-msg error">
+                <div><?php echo $_SESSION['message']['text']; unset($_SESSION['message']); ?></div>
+            </article>
+        <?php endif; ?>
+
         <article id="form">
             <form id="form-login" action="<?php echo BASE_URL."/login/auth"?> " method="POST" valid="true">
                 

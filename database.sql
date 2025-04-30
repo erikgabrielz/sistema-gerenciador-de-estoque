@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: sql210.ezyro.com
--- Tempo de geração: 25/04/2025 às 15:10
--- Versão do servidor: 10.6.19-MariaDB
--- Versão do PHP: 7.2.22
+-- Host: 127.0.0.1
+-- Tempo de geração: 30/04/2025 às 03:35
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `ezyro_38718018_warehouse`
+-- Banco de dados: `warehouse`
 --
 
 -- --------------------------------------------------------
@@ -117,6 +116,21 @@ INSERT INTO `products` (`id`, `product`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `ip` varchar(15) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `expire` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `stock`
 --
 
@@ -141,8 +155,7 @@ INSERT INTO `stock` (`id`, `brand`, `category`, `product`, `supplier`, `type`, `
 (48, 3, 5, 8, 2, 2, 2, 75, 2),
 (49, 4, 5, 11, 2, 2, 3, 80, 1),
 (50, 3, 5, 12, 2, 2, 2, 65, 1),
-(55, 3, 7, 13, 2, 1, 1, 35, 1),
-(56, 3, 7, 14, 2, 1, 1, 35, 1);
+(55, 3, 7, 13, 2, 1, 1, 35, 1);
 
 -- --------------------------------------------------------
 
@@ -217,7 +230,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `user`, `password`, `level`, `status
 (2, 'Vinicius Staidel', 'vinistdl@gmail.com', 'vini', '$2y$10$XOcKwJ2L8yYZUpvSPmrZ/.dHFAiQIz2R8jirxHcbClmjvRxcHiUcO', 0, 1, '2025-04-11 01:52:51', '2025-04-24 17:57:37');
 
 --
--- Índices de tabelas apagadas
+-- Índices para tabelas despejadas
 --
 
 --
@@ -243,6 +256,13 @@ ALTER TABLE `extras`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Índices de tabela `stock`
@@ -277,7 +297,7 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -305,6 +325,12 @@ ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT de tabela `sessions`
+--
+ALTER TABLE `sessions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de tabela `stock`
 --
 ALTER TABLE `stock`
@@ -329,8 +355,14 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Restrições para dumps de tabelas
+-- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `sessions`
+--
+ALTER TABLE `sessions`
+  ADD CONSTRAINT `sessions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Restrições para tabelas `stock`

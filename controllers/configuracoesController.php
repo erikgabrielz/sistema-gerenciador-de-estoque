@@ -1,11 +1,23 @@
 <?php
     class configuracoesController extends Controller{
         public function index(){
+            
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
             $data['title'] = "Configurações - ".APP_NAME;
             $this->loadView("config/config", $data);
         }
 
         public function updateUser(){
+
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
             $_SESSION['message'] = [
                 "status" => "error",
                 "text" => "Operação não realizada. Tente novamente!"

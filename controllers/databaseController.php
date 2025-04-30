@@ -2,6 +2,12 @@
 
     class databaseController extends Controller{
         public function index(){
+
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
             $data['title'] = "Gerenciar banco de dados - ".APP_NAME;   
 
             for($i = 0; $i < count(TABLES); $i ++){
@@ -20,6 +26,12 @@
         }
 
         public function add(){
+
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
             $_SESSION['message'] = [
                 "status" => "error",
                 "text" => "Operação não realizada. Tente novamente!"

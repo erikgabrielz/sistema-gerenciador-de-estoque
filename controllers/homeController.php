@@ -22,6 +22,12 @@
         }
 
         public function add(){
+
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
             $data['title'] = "Adicionar produto - ".APP_NAME;
             $data['items'] = [];
 
@@ -44,6 +50,12 @@
         }
 
         public function addProduct(){
+
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
             $_SESSION['message'] = [
                 "status" => "error",
                 "text" => "Operação não realizada. Tente novamente!"
@@ -82,6 +94,12 @@
         }
 
         public function edit($id = ""){
+
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
             $data['title'] = "Editar item - ".APP_NAME;
 
             if(empty($id)){
@@ -107,6 +125,12 @@
         }
 
         public function update(){
+
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
             $_SESSION['message'] = [
                 "status" => "error",
                 "text" => "Operação não realizada. Tente novamente!"
@@ -146,6 +170,12 @@
         }
 
         public function delete($id = ""){
+
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
             $_SESSION['message'] = [
                 "status" => "error",
                 "text" => "Operação não realizada. Tente novamente!"
@@ -167,6 +197,12 @@
         }
 
         public function sell($id = ""){
+
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
             if(empty($id)){
                 header("Location: index.php");
             }

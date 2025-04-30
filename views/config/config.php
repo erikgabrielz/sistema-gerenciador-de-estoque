@@ -21,20 +21,20 @@
 
     <article id="config-form">
         <form method="POST" id="form-email" action="<?php echo BASE_URL; ?>/configuracoes/updateUser" valid="true">
-            <input type="hidden" name="id" value="<?php echo $_COOKIE['id']; ?>" />
+            <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>" />
             
             <label class="label" for="user">Nome de usuário</label>
-            <input class="input" type="text" name="user" id="user" placeholder="Nome de usuário" disabled value="<?php echo $_COOKIE['user']; ?>"/>
+            <input class="input" type="text" name="user" id="user" placeholder="Nome de usuário" disabled value="<?php echo $_SESSION['user-logged']; ?>"/>
             
             <label class="label" for="email">E-mail</label>
-            <input class="input" type="email" name="email" id="email" placeholder="E-mail" value="<?php echo $_COOKIE['email']; ?>"/>
+            <input class="input" type="email" name="email" id="email" placeholder="E-mail" value="<?php echo $_SESSION['email']; ?>"/>
             <div class="validate-message" id="email-message"></div>
             
             <input class="button" type="submit" value="Alterar e-mail" />
         </form>
 
         <form method="POST" id="form-password" action="<?php echo BASE_URL; ?>/configuracoes/updateUser" valid="true">
-            <input type="hidden" name="id" value="<?php echo $_COOKIE['id']; ?>" />
+            <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>" />
             
             <label class="label" for="password">Nova senha</label>
             <input class="input" type="password" name="password" id="password" maxlength="8"/>
