@@ -12,7 +12,7 @@
     $config = array();
 
     if(ENVIRONMENT == 'development'){
-        define("BASE_URL", "http://localhost");
+        define("BASE_URL", "http://localhost:8080");
         $config['dbname'] = 'warehouse';
         $config['host'] = 'localhost';
         $config['dbuser'] = 'root';

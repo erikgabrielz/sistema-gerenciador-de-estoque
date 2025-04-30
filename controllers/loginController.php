@@ -93,5 +93,9 @@
             header("Location: /");
         }
 
+        public function isLogged(){
+            echo json_encode($this->validLogin());
+        }
+
     }
 ?>

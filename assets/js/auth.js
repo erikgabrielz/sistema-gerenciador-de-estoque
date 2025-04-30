@@ -1,10 +1,24 @@
-var userLogged = false;
-let cookies = document.cookie.split('; ');
+var userLogged;
+let cookies = document.cookie.split('; ').find(cookie => cookie.startsWith("token="));
 
-if (cookies.indexOf("user-logged")) {
-    cookies.map(item => {
-        if (item.slice(0, -2) == "user-logged") {
-            userLogged = item.slice(-1) == 1;
+if (cookies) {
+    fetch(`${BASE_URL}/login/isLogged`, {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'text/html; charset=utf8',
         }
+    })
+    .then(response => {
+        if (!response.ok) { 
+            throw new Error(`Erro: ${response.status}`);
+        }
+
+        return response.json();
+    })
+    .then(data => {
+        userLogged = data;
+    })
+    .catch(error => {
+        console.error('Erro na requisição:', error);
     });
 }
