@@ -12,13 +12,20 @@
                 $session = new Session();
                 $session = $session->getSession($_COOKIE["token"]);
 
-                if($session && $session["ip"] == CLIENT_IP){
+                if(!empty($session) && $session["ip"] == CLIENT_IP){
                     $response = true;
                     $_SESSION['id'] = $session['id'];
                     $_SESSION["user-logged"] = $session['user'];
                     $_SESSION["name"] = $session['name'];
                     $_SESSION["email"] = $session['email'];
                     $_SESSION["level"] = $session['level'];
+                }else{
+                    setcookie("token", false, time() - 14400, '/');
+                    $_SESSION = array();
+                    session_destroy();
+
+                    header("Location: /");
+                    exit();
                 }
             }
 

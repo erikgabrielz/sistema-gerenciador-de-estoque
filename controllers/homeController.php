@@ -1,6 +1,12 @@
 <?php
     class homeController extends Controller{
         public function index(){
+            
+            if(strpos($_SERVER["REQUEST_URI"], "?i=1")){
+                header("Location: /");
+                exit();
+            }
+
             $data['title'] = "Home - ".APP_NAME;         
             $this->loadView("home/home", $data);
         }

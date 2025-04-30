@@ -6,7 +6,7 @@
     <article class="title-container">
         <div class="flex justify center title">
             <h1>Estoque</h1>
-            <?php if(isset($_COOKIE['user-logged']) && $_COOKIE['user-logged']): ?>
+            <?php if(isset($_SESSION['user-logged']) && $_SESSION['user-logged']): ?>
                 <a href="/home/add"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/add.png" /></button></a>
             <?php endif; ?>
         </div>
