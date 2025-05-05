@@ -56,4 +56,36 @@
             header("Location: /database");
         }
 
+        public function edit($table, $id){
+
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
+            $_SESSION['message'] = [
+                "status" => "error",
+                "text" => "Operação não realizada. Tente novamente!"
+            ];
+
+            // if(!isset($table) || !empty($table)){
+            //     header("Location: /database");
+            //     exit();
+            // }
+
+            // if(!isset($id) || !empty($id)){
+            //     header("Location: /database");
+            //     exit();
+            // }
+
+            // $table = addslashes($table);
+            // $id = addslashes($id);
+
+            // $table = new $table();
+
+            // echo "$id";
+
+            header("Location: /");
+        }
+
     }

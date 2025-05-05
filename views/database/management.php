@@ -64,7 +64,7 @@
                     ?>
                                     <tr>
                                         <td><?php echo $value; ?></td>
-                                        <td><button class="button">Editar</button><button class="button">Apagar</button></td>
+                                        <td><a href="<?php echo BASE_URL."/database/edit/".$key."/".$item[$i]["id"]; ?>"><button class="button">Editar</button></a><a href="#"><button class="button">Apagar</button></a></td>
                                     </tr>
                     <?php   
                                 endif;
