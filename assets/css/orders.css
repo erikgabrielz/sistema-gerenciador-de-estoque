@@ -1,10 +1,7 @@
 #orders-items{
-    padding: 0px 35px;
-}
-
-#orders-items{
-    margin: 20px 0px auto;
+    margin: 10px auto 10px;
     width: 100%;
+    max-width: var(--max-width);
 }
 
 #orders-items .item{

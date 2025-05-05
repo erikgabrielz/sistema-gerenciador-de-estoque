@@ -1,0 +1,39 @@
+#data-tables table {
+    color: var(--font-color-1);
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 30px auto 10px;
+    border: 1px solid var(--bg-item);
+    border-radius: 0px 0px 10px 10px;
+    
+}
+
+#data-tables caption, #data-tables thead{
+    color: var(--font-color-2);
+    background-color: var(--bg-item);
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+    margin: auto;
+}
+
+#data-tables th{
+    padding: 10px;
+}
+
+
+#data-tables td {
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    border-bottom: 1px solid var(--bg-item);
+}
+
+#data-tables tr:last-child td {
+    border-bottom: none;
+}
+
+#data-tables .button {
+    width: 100%;
+    margin: 2px 2.5px;
+}
+

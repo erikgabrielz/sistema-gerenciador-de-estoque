@@ -2,8 +2,6 @@
     require_once("views/header.php");
 ?>
 
-    <?php //print_r($items); ?>
-
 <section class="container">
     <article class="title-container">
         <div class="flex justify center title">
@@ -37,6 +35,50 @@
                 <input class="button" type="submit" value="Adicionar valor na tabela" />
             </div>
         </form>
+    </article>
+
+    <article id="data-tables">
+        
+        <?php foreach($items as $key => $item): ?>
+            <table>            
+                <caption>
+                    <?php 
+                        for($i = 0; $i < count(TABLES); $i++): 
+                            if($key == TABLES[$i]):
+                                echo TABLES_PT[$i];
+                            endif;
+                        endfor;
+                    ?>
+                </caption>
+                <thead>
+                    <tr>
+                      <th>Valor</th>
+                      <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        for($i = 0; $i < count($item); $i++): 
+                            foreach($item[$i] as $value):
+                                if(!is_numeric($value)): 
+                    ?>
+                                    <tr>
+                                        <td><?php echo $value; ?></td>
+                                        <td><button class="button">Editar</button><button class="button">Apagar</button></td>
+                                    </tr>
+                    <?php   
+                                endif;
+                            endforeach; 
+                        endfor; 
+                    ?>
+                </tbody>
+            </table>
+        <?php endforeach; ?>
+    
+        
+
+            
+        
     </article>
 </section>
 

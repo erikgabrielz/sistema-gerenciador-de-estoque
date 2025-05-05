@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/orders.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/config.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/add-items.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/database-magement.css">
 
     <link rel="shortcut icon" href="<?php echo BASE_URL; ?>/assets/media/tool.png" />
 
@@ -25,10 +26,12 @@
     <header class="flex">
         <nav class="container flex center justify wrap">
             <section>
-                <article class="flex center" id="icon">
-                    <img class="icon" src="<?php echo BASE_URL; ?>/assets/media/tool.png"/>
-                    <p><?php echo APP_NAME; ?></p>
-                </article>
+                <a href="<?php echo BASE_URL; ?>">
+                    <article class="flex center" id="icon">
+                        <img class="icon" src="<?php echo BASE_URL; ?>/assets/media/tool.png"/>
+                        <p><?php echo APP_NAME; ?></p>
+                    </article>
+                </a>
             </section>
 
             <section>

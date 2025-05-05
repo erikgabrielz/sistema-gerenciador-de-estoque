@@ -1,5 +1,5 @@
 #form-items{
-    max-width: 85%;
+    max-width: var(--max-width);
     margin: auto;
 }
 

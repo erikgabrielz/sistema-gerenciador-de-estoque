@@ -1,16 +1,11 @@
-#home-search, #home-items{
-    padding: 0px 35px;
-}
-
 .item-action{
     width: 100px;
 }
 
-
-
 #home-search .input, #home-items{
-    margin: 20px 0px auto;
+    margin: 10px auto 10px;
     width: 100%;
+    max-width: var(--max-width);
 }
 
 .item-action .button{

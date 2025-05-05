@@ -21,7 +21,7 @@
                 // Opcional: Armazene o resultado se necessário
                 $data["items"][TABLES[$i]] = $result;
             }
-            
+
             $this->loadView("database/management", $data);
         }
 
