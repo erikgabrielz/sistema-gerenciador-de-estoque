@@ -3,7 +3,7 @@
     class Session extends Model{
 
         private $table = "sessions";
-        private $join_users = "";
+        private $join_users = "users";
 
         public function getSession($token){
             $response = false;
