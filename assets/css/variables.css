@@ -6,7 +6,7 @@
     --font-color-1: #A9A9A9;
     --font-color-2: #FFF;
     --font-color-error: rgba(255, 0, 0, 0.5);
-    --max-width: 80%;
+    --max-width: 87%;
 }
 
 *{
@@ -73,7 +73,7 @@ footer{
 }
 
 .title-container{
-    width: 85%;
+    width: var(--max-width);
     margin: auto;
 }
 

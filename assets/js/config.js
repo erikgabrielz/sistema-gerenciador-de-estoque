@@ -1,4 +1,4 @@
-const ENVIRONMENT = "development_2";
+const ENVIRONMENT = "development_1";
 
 const URLS = {
     development_1: "http://localhost",
