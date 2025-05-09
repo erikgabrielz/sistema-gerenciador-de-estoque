@@ -8,6 +8,7 @@
         <script src="<?php echo BASE_URL; ?>/assets/js/formatPrice.js"></script>
         <script src="<?php echo BASE_URL; ?>/assets/js/ValidateInputs.js"></script>
         <script src="<?php echo BASE_URL; ?>/assets/js/ValidateFormAddStock.js"></script>
+        <script src="<?php echo BASE_URL; ?>/assets/js/database_population.js"></script>
     </footer>
 </body>
 </html>

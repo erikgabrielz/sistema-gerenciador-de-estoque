@@ -158,7 +158,7 @@ label{
 }
 
 .alert-msg div{
-    width: 85%;
+    width: var(--max-width);
     border-radius: 10px;
     margin: auto;
     margin-top: 20px;
