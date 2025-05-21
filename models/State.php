@@ -4,6 +4,19 @@
 
         private $table = "states";
 
+        public function getState($state = ""){
+            $response = false;
+
+            $sql = $this->connect->prepare("SELECT * FROM ".$this->table);
+            $sql->execute();
+
+            if($sql->rowCount() > 0){
+                $response = $sql->fetchAll();
+            }
+
+            return $response;
+        }
+
         public function add($nome, $sigla){
             $response = false;
 
