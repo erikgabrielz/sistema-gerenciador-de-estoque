@@ -1,14 +1,13 @@
 <?php
     class configuracoesController extends Controller{
         public function index(){
-            
             if(!$this->validLogin()){
                 header("Location: /login");
                 exit(); 
             }
 
             $data['title'] = "Configurações - ".APP_NAME;
-            $this->loadView("config/config", $data);
+            $this->loadView("config/config_account", $data);
         }
 
         public function updateUser(){

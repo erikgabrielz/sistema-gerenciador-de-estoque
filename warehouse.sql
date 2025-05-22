@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30/04/2025 às 03:35
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+-- Tempo de geração: 22/05/2025 às 21:01
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,23 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `warehouse`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `addresses`
+--
+
+CREATE TABLE `addresses` (
+  `id` int(11) NOT NULL,
+  `street` varchar(200) NOT NULL,
+  `number` int(6) NOT NULL,
+  `district` varchar(100) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `state_acronym` varchar(2) NOT NULL,
+  `cep` varchar(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -69,6 +86,31 @@ INSERT INTO `categories` (`id`, `category`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `clients`
+--
+
+CREATE TABLE `clients` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone_number` varchar(14) NOT NULL,
+  `address` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `defects`
+--
+
+CREATE TABLE `defects` (
+  `id` int(11) NOT NULL,
+  `defect` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `extras`
 --
 
@@ -85,6 +127,20 @@ INSERT INTO `extras` (`id`, `extra`) VALUES
 (1, 'NÃ£o se aplica'),
 (2, 'Com aro'),
 (3, 'Sem aro');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `menu_options`
+--
+
+CREATE TABLE `menu_options` (
+  `id` int(11) NOT NULL,
+  `url` varchar(50) NOT NULL,
+  `img` varchar(50) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `modified` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -127,6 +183,15 @@ CREATE TABLE `sessions` (
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   `expire` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `user_id`, `ip`, `token`, `created`, `expire`) VALUES
+(7, 1, '::1', 'd28403af373a31bfcb67bccf0dbd7e91a6a7fa6380a8fdbd77a75f544e9db02b', '2025-05-06 18:50:22', '2025-05-06 21:50:22'),
+(8, 1, '::1', '9d81cbe73635b63f9abc9dec38352de9cea5e0933f798c285e74bc0bda510b3a', '2025-05-08 16:09:08', '2025-05-08 19:09:08'),
+(11, 1, '::1', '880622a321f47346d268318014609aee280491cfb6241d4c6db9899617e5ff0a', '2025-05-22 17:49:01', '2025-05-22 20:49:01');
 
 -- --------------------------------------------------------
 
@@ -234,6 +299,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `user`, `password`, `level`, `status
 --
 
 --
+-- Índices de tabela `addresses`
+--
+ALTER TABLE `addresses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `brands`
 --
 ALTER TABLE `brands`
@@ -246,9 +317,27 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `clients`
+--
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `defects`
+--
+ALTER TABLE `defects`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `extras`
 --
 ALTER TABLE `extras`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `menu_options`
+--
+ALTER TABLE `menu_options`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -301,6 +390,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de tabela `addresses`
+--
+ALTER TABLE `addresses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `brands`
 --
 ALTER TABLE `brands`
@@ -313,10 +408,28 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT de tabela `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `defects`
+--
+ALTER TABLE `defects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `extras`
 --
 ALTER TABLE `extras`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `menu_options`
+--
+ALTER TABLE `menu_options`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `products`
@@ -328,7 +441,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de tabela `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `stock`

@@ -39,6 +39,7 @@
                     <?php if (isset($_SESSION['user-logged']) && !empty($_SESSION['user-logged'])): ?>
                         <a href="/"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/home.png"/></a>
                         <a href="/servicos"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/clipboard.png"/></a>
+                        <a href="/clientes"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/client.png"/></a>
                         <a href="/financeiro"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/money.png"/></a>
                         <a href="/configuracoes"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/config.png"/></a>
                     <?php else: ?>
