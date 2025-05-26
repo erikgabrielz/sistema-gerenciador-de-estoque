@@ -9,12 +9,12 @@ body{
 
 #icon{
     margin-bottom: 30px;
-}
 
-#icon p{
-    color: var(--font-color-2);
-    font-size: 20pt;
-    margin-left: 10px;
+    p{
+        color: var(--font-color-2);
+        font-size: 20pt;
+        margin-left: 10px;
+    }
 }
 
 #form{

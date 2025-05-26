@@ -1,0 +1,23 @@
+#statistics{
+    margin: auto;
+    max-width: var(--max-width);
+
+    div{
+        color: white;
+    }
+
+    .item{
+        width: 200px;
+        margin: 5px;
+    
+    }
+
+    p{
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    span{
+        color: var(--bg-color);
+    }
+}

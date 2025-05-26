@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/config.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/add-items.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/database-magement.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/finance.css">
 
     <link rel="shortcut icon" href="<?php echo BASE_URL; ?>/assets/media/tool.png" />
 

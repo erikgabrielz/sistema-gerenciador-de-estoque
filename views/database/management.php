@@ -73,12 +73,7 @@
                     ?>
                 </tbody>
             </table>
-        <?php endforeach; ?>
-    
-        
-
-            
-        
+        <?php endforeach; ?>        
     </article>
 </section>
 

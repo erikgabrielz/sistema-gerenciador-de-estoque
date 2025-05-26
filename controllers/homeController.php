@@ -17,8 +17,14 @@
                 "data" => "Nenhum produto encontrado!"
             ];
 
+            $user_id = "";
+
+            if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
+                $user_id = $_SESSION['id'];
+            }
+
             $stock = new Stock();
-            $stock = $stock->getStock();
+            $stock = $stock->getStock("", $user_id);
 
             if(!empty($stock)){
                 $return = $stock;

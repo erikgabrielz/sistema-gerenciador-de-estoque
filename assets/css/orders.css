@@ -2,25 +2,25 @@
     margin: 10px auto 10px;
     width: 100%;
     max-width: var(--max-width);
-}
 
-#orders-items .item{
-    height: 135px;
-}
+    .item{
+        height: 135px;
+    }
 
-#orders-items .item-title{
-    margin-top: 20px;
-}
+    .item-title{
+        margin-top: 20px;
+    }
 
-#orders-items .item-action{
-    max-width: 100%;
-    margin-top: 10px;
-}
+    .item-action{
+        max-width: 100%;
+        margin-top: 10px;
+    }
 
-#orders-items .item-action .button{
-    padding: 0px 25px;
-}
+    .item-action .button{
+        padding: 0px 25px;
+    }
 
-#orders-items .item-action a{
-    margin: 0px 5px;
+    .item-action a{
+        margin: 0px 5px;
+    }
 }

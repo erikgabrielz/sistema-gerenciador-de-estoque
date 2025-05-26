@@ -9,7 +9,7 @@
             };
 
             const BASE_URL = URLS[ENVIRONMENT];
-        </script>';
+        </script>
         <script src="<?php echo BASE_URL; ?>/assets/js/auth.js"></script>
         <script src="<?php echo BASE_URL; ?>/assets/js/getStock.js"></script>
         <script src="<?php echo BASE_URL; ?>/assets/js/alerts.js"></script>
