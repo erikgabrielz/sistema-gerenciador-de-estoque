@@ -1,5 +1,15 @@
     <footer>
-        <script src="<?php echo BASE_URL; ?>/assets/js/config.js"></script>
+        <script>
+            const ENVIRONMENT = "<?php echo ENVIRONMENT; ?>";
+
+            const URLS = {
+                development_1: "http://localhost",
+                development_2: "http://localhost:8080",
+                production: "https://estoque.unaux.com"
+            };
+
+            const BASE_URL = URLS[ENVIRONMENT];
+        </script>';
         <script src="<?php echo BASE_URL; ?>/assets/js/auth.js"></script>
         <script src="<?php echo BASE_URL; ?>/assets/js/getStock.js"></script>
         <script src="<?php echo BASE_URL; ?>/assets/js/alerts.js"></script>
