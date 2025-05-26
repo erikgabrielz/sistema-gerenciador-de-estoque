@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: sql210.ezyro.com
--- Tempo de geração: 25/05/2025 às 21:18
--- Versão do servidor: 10.6.19-MariaDB
--- Versão do PHP: 7.2.22
+-- Host: 127.0.0.1
+-- Tempo de geração: 26/05/2025 às 21:40
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `ezyro_38718018_warehouse`
+-- Banco de dados: `warehouse`
 --
 
 -- --------------------------------------------------------
@@ -218,6 +217,19 @@ INSERT INTO `products` (`id`, `product`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `sales`
+--
+
+CREATE TABLE `sales` (
+  `id` int(11) NOT NULL,
+  `price` double NOT NULL,
+  `sale_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `user_sale` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `sessions`
 --
 
@@ -248,7 +260,8 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip`, `token`, `created`, `expire`) VAL
 (29, 2, '191.37.11.200', '8b19f56fa5371e1701c0ffc6cfd6a0ff45ff8b9087cdf0e3e448c99ac209a2fb', '2025-05-24 16:40:09', '2025-05-24 23:40:09'),
 (30, 2, '191.37.11.200', '55eed9842f42edec608b1d3987abe0ec61d8859f27bfb7ff80fbefa2e519ed00', '2025-05-24 20:53:17', '2025-05-25 03:53:17'),
 (32, 2, '177.51.45.124', '9bd861171f3667b0f33686dd74647e7ad66cf7127cd26201effc51eeed070d6b', '2025-05-25 17:28:33', '2025-05-26 00:28:33'),
-(33, 2, '191.37.11.200', 'b2deee6fbe18bcfb57c61956e4c9a77c2da653b24e144e087fe07bd2cdedfdee', '2025-05-25 21:51:23', '2025-05-26 04:51:23');
+(33, 2, '191.37.11.200', 'b2deee6fbe18bcfb57c61956e4c9a77c2da653b24e144e087fe07bd2cdedfdee', '2025-05-25 21:51:23', '2025-05-26 04:51:23'),
+(41, 1, '::1', '2a4df398303e85af2f0822ef7be077bc34b29b95b4fbc85b516f3918b69a06c5', '2025-05-26 17:53:49', '2025-05-26 20:53:49');
 
 -- --------------------------------------------------------
 
@@ -278,8 +291,8 @@ INSERT INTO `stock` (`id`, `brand`, `category`, `product`, `supplier`, `type`, `
 (48, 3, 5, 8, 2, 2, 2, 75, 2, 2),
 (49, 4, 5, 11, 2, 2, 3, 80, 1, 2),
 (50, 3, 5, 12, 2, 2, 2, 70, 2, 2),
-(56, 3, 7, 14, 2, 1, 1, 35, 1, 2),
-(59, 3, 7, 13, 2, 1, 1, 35, 2, 2),
+(56, 3, 7, 14, 2, 1, 1, 35, 3, 1),
+(59, 3, 7, 13, 2, 1, 1, 35, 2, 1),
 (60, 3, 5, 16, 2, 3, 3, 450, 1, 2),
 (61, 6, 5, 18, 3, 2, 3, 150, 1, 2),
 (62, 3, 5, 19, 2, 3, 3, 200, 1, 2),
@@ -508,7 +521,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `user`, `password`, `level`, `status
 (3, 'Diego', 'diegomichalowski18@gmail.com', 'dimi', '$2y$10$hXKBcgHx43vIihhEhlUy5O2efJNwD9r1/gWGHXi1tCyp/j2MUt2Cu', 0, 1, '2025-04-30 17:30:38', '2025-05-14 00:50:23');
 
 --
--- Índices de tabelas apagadas
+-- Índices para tabelas despejadas
 --
 
 --
@@ -534,6 +547,13 @@ ALTER TABLE `extras`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_user_sale` (`user_sale`);
 
 --
 -- Índices de tabela `sessions`
@@ -576,7 +596,7 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -604,16 +624,22 @@ ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
+-- AUTO_INCREMENT de tabela `sales`
+--
+ALTER TABLE `sales`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de tabela `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
 
 --
 -- AUTO_INCREMENT de tabela `suppliers`
@@ -634,8 +660,14 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Restrições para dumps de tabelas
+-- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `sales`
+--
+ALTER TABLE `sales`
+  ADD CONSTRAINT `fk_user_sale` FOREIGN KEY (`user_sale`) REFERENCES `users` (`id`);
 
 --
 -- Restrições para tabelas `sessions`
