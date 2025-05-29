@@ -45,7 +45,7 @@
         public function getstatistics(){
             $response = false;
 
-            $sql = $this->connect->prepare("SELECT COUNT(quantity) as total_quantity, SUM(price) as total_price FROM ".$this->table." WHERE user_created = :user_created");
+            $sql = $this->connect->prepare("SELECT SUM(quantity) as total_quantity, SUM(price * quantity) AS total_price  FROM ".$this->table." WHERE user_created = :user_created");
             $sql->bindValue(":user_created", $_SESSION["id"]);
             $sql->execute();
             
