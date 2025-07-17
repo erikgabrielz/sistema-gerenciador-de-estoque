@@ -19,6 +19,9 @@
         <script src="<?php echo BASE_URL; ?>/assets/js/ValidateInputs.js"></script>
         <script src="<?php echo BASE_URL; ?>/assets/js/ValidateFormAddStock.js"></script>
         <script src="<?php echo BASE_URL; ?>/assets/js/database_population.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script src="<?php echo BASE_URL; ?>/assets/js/select2.js"></script>
     </footer>
 </body>
 </html>

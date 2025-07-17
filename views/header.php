@@ -13,6 +13,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/add-items.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/database-magement.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/finance.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/css/select2.css">
+    
 
     <link rel="shortcut icon" href="<?php echo BASE_URL; ?>/assets/media/tool.png" />
 
