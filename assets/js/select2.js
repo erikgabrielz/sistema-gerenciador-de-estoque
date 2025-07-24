@@ -39,3 +39,17 @@ $(document).ready(function() {
     allowClear: false
   });
 });
+
+$(document).ready(function() {
+  $('#uf').select2({
+    placeholder: "Selecione uma opção",
+    allowClear: false
+  });
+});
+
+$(document).ready(function() {
+  $('#city').select2({
+    placeholder: "Selecione uma opção",
+    allowClear: false
+  });
+});

@@ -6,7 +6,12 @@
     <article class="title-container">
         <div class="flex justify center title">
             <h1>Clientes</h1>
+            <a href="/clientes/add"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/add.png" /></button></a>
         </div>
+    </article>
+
+    <article class="flex center" id="home-search">
+        <input class="input" id="search" type="search" placeholder="Pesquisar" />
     </article>
 
     <?php if(isset($_SESSION['message']) && !empty($_SESSION['message']) && $_SESSION['message']['status'] == "success"): ?>
@@ -19,50 +24,15 @@
         </article>
     <?php endif; ?>
 
-    <article id="config-form">
-        <form method="POST" id="form-clients" action="<?php echo BASE_URL; ?>/clientes/addCliente" valid="true">
-            
-            <label class="label" for="name">Nome completo do cliente</label>
-            <input class="input" type="text" name="name" id="name"/>
-            
-            <label class="label" for="email">E-mail</label>
-            <input class="input" type="email" name="email" id="email"/>
-            <div class="validate-message" id="email-message"></div>
-
-            <label class="label" for="phone">Telefone de contato</label>
-            <input class="input" type="tel" name="phone" id="phone"/>
-            <div class="validate-message" id="phone-message"></div>
-
-            <div class="address">
-                <label class="label" for="street">Rua</label>
-                <input class="input" type="text" name="street" id="street"/>
-
-                <label class="label" for="number">Número</label>
-                <input class="input" type="number" name="number" id="number"/>
-
-                <label class="label" for="district">Bairro</label>
-                <input class="input" type="text" name="district" id="district"/>
-
-                <label class="label" for="city">Município</label>
-                <select class="input" name="city" id="city">
-
-                </select>
-
-                <label class="label" for="state">Estado</label>
-                <select class="input" name="state" id="state">
-
-                </select>
-
-                <label class="label" for="cep">CEP</label>
-                <input class="input" type="number" name="cep" id="cep" maxlength="9"/>
+    <article class="flex center column" id="home-items">
+        <div class="item flex center justify">
+            <div class="item-desc">
+                <h3 id="item-title" class="item-title">Carregando<span id="loading"></span></h3>
             </div>
-            
-            <input class="button" type="submit" value="Cadastrar cliente" />
-        </form>
+        </div>
     </article>
 </section>
 
 <?php
     require_once("views/footer.php");
 ?>
-

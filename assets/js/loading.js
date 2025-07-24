@@ -1,4 +1,4 @@
-if (window.location.href == `${BASE_URL}/` || window.location.href == `${BASE_URL}/home`) {
+if (window.location.href == `${BASE_URL}/` || window.location.href == `${BASE_URL}/home` || window.location.href == `${BASE_URL}/clientes`) {
     const dotsElement = document.getElementById('loading');
     let dots = '';
 
