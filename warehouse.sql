@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26/05/2025 às 21:40
+-- Tempo de geração: 25/07/2025 às 20:41
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -69,6 +69,28 @@ INSERT INTO `categories` (`id`, `category`) VALUES
 (14, 'CarcaÃ§a'),
 (15, 'Placa-mÃ£e'),
 (16, 'CÃ¢mera');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `clients`
+--
+
+CREATE TABLE `clients` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `cpf` varchar(18) NOT NULL,
+  `email` varchar(150) NOT NULL DEFAULT 'Não consta',
+  `phone` varchar(15) NOT NULL,
+  `cep` varchar(12) NOT NULL DEFAULT 'Não consta',
+  `street` varchar(50) NOT NULL DEFAULT 'Não consta',
+  `number` varchar(6) NOT NULL DEFAULT 's/nº',
+  `district` varchar(50) NOT NULL DEFAULT 'Não consta',
+  `uf` varchar(2) NOT NULL DEFAULT 'PR',
+  `city` varchar(50) NOT NULL DEFAULT 'Virmond',
+  `user_created` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -227,6 +249,13 @@ CREATE TABLE `sales` (
   `user_sale` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `sales`
+--
+
+INSERT INTO `sales` (`id`, `price`, `sale_date`, `user_sale`) VALUES
+(1, 35, '2025-05-29 16:22:19', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -261,7 +290,12 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip`, `token`, `created`, `expire`) VAL
 (30, 2, '191.37.11.200', '55eed9842f42edec608b1d3987abe0ec61d8859f27bfb7ff80fbefa2e519ed00', '2025-05-24 20:53:17', '2025-05-25 03:53:17'),
 (32, 2, '177.51.45.124', '9bd861171f3667b0f33686dd74647e7ad66cf7127cd26201effc51eeed070d6b', '2025-05-25 17:28:33', '2025-05-26 00:28:33'),
 (33, 2, '191.37.11.200', 'b2deee6fbe18bcfb57c61956e4c9a77c2da653b24e144e087fe07bd2cdedfdee', '2025-05-25 21:51:23', '2025-05-26 04:51:23'),
-(41, 1, '::1', '2a4df398303e85af2f0822ef7be077bc34b29b95b4fbc85b516f3918b69a06c5', '2025-05-26 17:53:49', '2025-05-26 20:53:49');
+(41, 1, '::1', '2a4df398303e85af2f0822ef7be077bc34b29b95b4fbc85b516f3918b69a06c5', '2025-05-26 17:53:49', '2025-05-26 20:53:49'),
+(43, 2, '::1', 'e4026e43ce2da368660138a4fc9156191e02324ac919bec018478ec654421429', '2025-05-29 16:38:31', '2025-05-29 19:38:31'),
+(44, 1, '::1', 'ef86f12a7f38c36682a4308bf8278e355c28c1336215e5518dd479eb94d78564', '2025-07-17 12:46:42', '2025-07-17 15:46:42'),
+(46, 1, '::1', '9d9a16d149a0c849e749a2e6179a9c782224cfcc904126b965fdec42539ea01e', '2025-07-24 16:47:33', '2025-07-24 19:47:33'),
+(47, 1, '::1', '9aac8092c50c8d3dfc9bf6e05d590dc4550c38c58e369bbf40f44fd503ed0967', '2025-07-25 11:51:46', '2025-07-25 14:51:46'),
+(48, 1, '::1', '412438f731e2f58307d41c73e9082dc0e7e30c28dd9b124cba3d2430ef1e914f', '2025-07-25 16:12:48', '2025-07-25 19:12:48');
 
 -- --------------------------------------------------------
 
@@ -291,8 +325,6 @@ INSERT INTO `stock` (`id`, `brand`, `category`, `product`, `supplier`, `type`, `
 (48, 3, 5, 8, 2, 2, 2, 75, 2, 2),
 (49, 4, 5, 11, 2, 2, 3, 80, 1, 2),
 (50, 3, 5, 12, 2, 2, 2, 70, 2, 2),
-(56, 3, 7, 14, 2, 1, 1, 35, 3, 1),
-(59, 3, 7, 13, 2, 1, 1, 35, 2, 1),
 (60, 3, 5, 16, 2, 3, 3, 450, 1, 2),
 (61, 6, 5, 18, 3, 2, 3, 150, 1, 2),
 (62, 3, 5, 19, 2, 3, 3, 200, 1, 2),
@@ -439,7 +471,9 @@ INSERT INTO `stock` (`id`, `brand`, `category`, `product`, `supplier`, `type`, `
 (204, 3, 8, 24, 2, 1, 5, 20, 1, 2),
 (205, 3, 8, 23, 2, 1, 6, 35, 1, 2),
 (206, 3, 8, 57, 2, 1, 7, 40, 1, 2),
-(207, 3, 8, 55, 6, 1, 4, 40, 1, 2);
+(207, 3, 8, 55, 6, 1, 4, 40, 1, 2),
+(209, 3, 7, 13, 2, 1, 1, 35, 1, 1),
+(210, 3, 7, 14, 2, 1, 1, 35, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -537,6 +571,14 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `clients`
+--
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cpf` (`cpf`),
+  ADD KEY `fk_user_created` (`user_created`);
+
+--
 -- Índices de tabela `extras`
 --
 ALTER TABLE `extras`
@@ -612,6 +654,12 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT de tabela `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `extras`
 --
 ALTER TABLE `extras`
@@ -627,19 +675,19 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de tabela `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de tabela `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
 
 --
 -- AUTO_INCREMENT de tabela `suppliers`
@@ -662,6 +710,12 @@ ALTER TABLE `users`
 --
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `clients`
+--
+ALTER TABLE `clients`
+  ADD CONSTRAINT `fk_user_created` FOREIGN KEY (`user_created`) REFERENCES `users` (`id`);
 
 --
 -- Restrições para tabelas `sales`
