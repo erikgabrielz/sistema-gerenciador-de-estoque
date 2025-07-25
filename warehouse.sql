@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25/07/2025 às 20:41
+-- Tempo de geração: 25/07/2025 às 20:48
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -575,7 +575,6 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `cpf` (`cpf`),
   ADD KEY `fk_user_created` (`user_created`);
 
 --
