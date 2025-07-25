@@ -20,10 +20,14 @@
     <?php endif; ?>
 
     <article id="config-form">
-        <form method="POST" id="form-clients" action="<?php echo BASE_URL; ?>/clientes/addCliente" valid="true">
+        <form method="POST" id="form-clients" action="<?php echo BASE_URL; ?>/clientes/addCliente">
             
             <label class="label" for="name">Nome completo do cliente</label>
             <input class="input" type="text" name="name" id="name" autocomplete="off"/>
+
+            <label class="label" for="cpf">CPF/CPNJ</label>
+            <input class="input" type="text" name="cpf" id="cpf" autocomplete="off"/>
+            <div class="validate-message" id="cpf-message"></div>
             
             <label class="label" for="email">E-mail</label>
             <input class="input" type="email" name="email" id="email" autocomplete="off"/>
@@ -52,9 +56,7 @@
                 </select>
 
                 <label class="label" for="city">Município</label>
-                <select class="input" name="city" id="city">
-                    <option>Selecione uma opção</option>
-                </select>
+                <select class="input" name="city" id="city"></select>
             </div>
             
             <input class="button" type="submit" value="Cadastrar cliente" />

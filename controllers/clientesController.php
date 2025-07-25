@@ -10,6 +10,28 @@
             $this->loadView("clients/clients", $data);
         }
 
+        public function getClients(){
+            $return = [
+                "status" => 204,
+                "data" => "Nenhum produto encontrado!"
+            ];
+
+            $user_id = "";
+
+            if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
+                $user_id = $_SESSION['id'];
+            }
+
+            $stock = new Client();
+            $stock = $stock->getClient("", $user_id);
+
+            if(!empty($stock)){
+                $return = $stock;
+            }
+
+            echo json_encode($return);
+        }
+
         public function add(){
             if(!$this->validLogin()){
                 header("Location: /login");
@@ -23,35 +45,71 @@
         public function addCliente(){
             if(isset($_POST['name']) && !empty($_POST['name'])){
                 if(isset($_POST['phone']) && !empty($_POST['phone'])){
-                    if(isset($_POST['uf']) && !empty($_POST['uf'])){
+                    if(isset($_POST['cpf']) && !empty($_POST['cpf'])){
+                        
+                        $data = [
+                            "name" => addslashes($_POST['name']),
+                            "cpf" => addslashes($_POST['cpf']),
+                            "phone" => addslashes($_POST['phone']),
+                            "uf" => "PR",
+                            "city" => "Virmond",
+                            "email" => "Não consta",
+                            "cep" => "Não Consta",
+                            "street" => "Não Consta",
+                            "number" => "s/nº",
+                            "district" => "Não consta"
+                        ];
+
                         if(isset($_POST['city']) && !empty($_POST['city'])){
-
-                            if(!empty($_POST['email'])){
-                                $email = addslashes($_POST['email']);
-                            }
-
-                            if(!empty($_POST['cep'])){
-                                $cep = addslashes($_POST['cep']);
-                            }
-                            if(!empty($_POST['street'])){
-                                $street = addslashes($_POST['street']);
-                            }
-                            if(!empty($_POST['number'])){
-                                $street = addslashes($_POST['number']);
-                            }
-                            if(!empty($_POST['district'])){
-                                $street = addslashes($_POST['district']);
-                            }
-
-                            $name = addslashes($_POST['name']);
-                            $phone = addslashes($_POST['phone']);
-                            $uf = addslashes($_POST['uf']);
-                            $city = addslashes($_POST['city']);
-
-                            //criar o banco de dados de clientes e a model, depois incluir aqui.
+                            $data['city'] = addslashes($_POST['city']);
                         }
+
+                        if(isset($_POST['uf']) && !empty($_POST['uf'])){
+                            addslashes($_POST['uf']);
+                        }
+
+                        if(!empty($_POST['email'])){
+                            $data['email']= addslashes($_POST['email']);
+                        }
+
+                        if(!empty($_POST['cep'])){
+                            $data['cep'] = addslashes($_POST['cep']);
+                        }
+                        if(!empty($_POST['street'])){
+                            $data['street'] = addslashes($_POST['street']);
+                        }
+                        if(!empty($_POST['number'])){
+                            $data['number'] = addslashes($_POST['number']);
+                        }
+                        if(!empty($_POST['district'])){
+                            $data['district'] = addslashes($_POST['district']);
+                        }
+
+                        $client = new Client();
+
+                        if($client->addClient($data)){
+                            $_SESSION['message'] = [
+                                "status" => "success",
+                                "text" => "Operação realizada com sucesso!"
+                            ];
+
+                            header("Location: /clientes");
+                            exit();
+                        }
+                    }else{
+                        $_SESSION['message']['text'] = "Campo CPF não pode ficar em branco.";
+                        header("Location: /clientes");
+                        exit();
                     }
+                }else{
+                    $_SESSION['message']['text'] = "Campo telefone não pode ficar em branco.";
+                    header("Location: /clientes");
+                    exit();
                 }
+            }else{
+                $_SESSION['message']['text'] = "Campo nome não pode ficar em branco.";
+                header("Location: /clientes");
+                exit();
             }
         }
     }

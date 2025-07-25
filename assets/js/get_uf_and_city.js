@@ -38,8 +38,6 @@ if(window.location.href == `${BASE_URL}/clientes/add`){
             return response.json();
         })
         .then(data => {
-            console.log(data);
-
             let cities = document.querySelector('#city');
             cities.options.length = 0;
 

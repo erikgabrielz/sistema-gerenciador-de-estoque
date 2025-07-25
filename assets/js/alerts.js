@@ -1,11 +1,19 @@
-function confirmAlert(action, id, category, name) {
+function confirmAlert(action, page, id, category, name) {
     let alert;
 
     if (action == "delete") {
-        alert = window.confirm(`Tem certeza que deseja excluir o item: ${category} ${name}?`);
-        if (alert) {
-            window.location.href = `${BASE_URL}/home/delete/${id}`;
+        if(page == "home"){
+            alert = window.confirm(`Tem certeza que deseja excluir o item: ${category} ${name}?`);
+            if (alert) {
+                window.location.href = `${BASE_URL}/home/delete/${id}`;
+            }
         }
+        if(page == "client"){
+            alert = window.confirm(`Tem certeza que deseja excluir o cliente: ${category}?`);
+            if (alert) {
+                window.location.href = `${BASE_URL}/clientes/delete/${id}`;
+            }
+        }        
     }
 
     if (action == "sell") {
