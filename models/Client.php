@@ -7,10 +7,13 @@
         public function getClient($client = "", $user_id){
             $response = false;
 
-            $sql = $this->connect->prepare("SELECT * FROM ".$this->table);
+            $sql = $this->connect->prepare("SELECT * FROM ".$this->table. " WHERE user_created = :user_id");
             if(!empty($client)){
-                $sql = $sql." WHERE id = ".$client;
+                $sql = $sql." AND id = :client_id";
+                $sql->bindValue(":client_id", $client);
             }
+            
+            $sql->bindValue(":user_id", $user_id);
             $sql->execute();
 
             if($sql->rowCount() > 0){
@@ -35,6 +38,25 @@
 
             if($sql->execute()){
                 $response = true;
+            }
+
+            return $response;
+        }
+
+        public function delete($id){
+            $response = false;
+
+            $sql = $this->connect->prepare("SELECT id FROM ".$this->table." WHERE id = :id");
+            $sql->bindParam(":id", $id);
+            $sql->execute();
+
+            if($sql->rowCount() > 0){
+                $sql = $this->connect->prepare("DELETE FROM ".$this->table." WHERE id = :id");
+                $sql->bindParam(":id", $id);
+
+                if($sql->execute()){
+                    $response = true;
+                }
             }
 
             return $response;

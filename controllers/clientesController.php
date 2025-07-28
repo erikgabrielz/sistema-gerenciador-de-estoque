@@ -1,5 +1,6 @@
 <?php
     class clientesController extends Controller{
+
         public function index(){
             if(!$this->validLogin()){
                 header("Location: /login");
@@ -10,10 +11,10 @@
             $this->loadView("clients/clients", $data);
         }
 
-        public function getClients(){
+        public function getClients($id = ""){
             $return = [
                 "status" => 204,
-                "data" => "Nenhum produto encontrado!"
+                "data" => "Nenhum Cliente cadastrado!"
             ];
 
             $user_id = "";
@@ -22,11 +23,11 @@
                 $user_id = $_SESSION['id'];
             }
 
-            $stock = new Client();
-            $stock = $stock->getClient("", $user_id);
+            $client = new Client();
+            $client = $client->getClient($id, $user_id);
 
-            if(!empty($stock)){
-                $return = $stock;
+            if(!empty($client)){
+                $return = $client;
             }
 
             echo json_encode($return);
@@ -111,6 +112,54 @@
                 header("Location: /clientes");
                 exit();
             }
+        }
+
+        public function edit($id = ""){
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+            $user_id = "";
+            $data['title'] = "Editar cliente - ".APP_NAME;
+
+            if(empty($id)){
+                header("Location: /clientes");
+            }
+
+            if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
+                $user_id = $_SESSION['id'];
+            }
+
+            $client = new Client();
+            $data["client"] = $client->getClient($id, $user_id);
+
+            $this->loadView("clients/edit", $data);
+        }
+
+        public function delete($id){
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
+            $_SESSION['message'] = [
+                "status" => "error",
+                "text" => "Operação não realizada. Tente novamente!"
+            ];
+
+            if(!empty($id)){
+                $client = new Client();
+                $return = $client->delete($id);
+
+                if($return){
+                    $_SESSION['message'] = [
+                        "status" => "success",
+                        "text" => "Operação realizada com sucesso!"
+                    ];
+                }
+            }
+
+            header("Location: /clientes");
         }
     }
 ?>

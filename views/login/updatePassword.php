@@ -32,7 +32,7 @@
         <article id="form">
             <form id="form-updatePassword" action="<?php echo BASE_URL."/login/auth"?> " method="POST" valid="true">
                 
-                <input class="input" type="password" name="password" id="password" placeholder="Nova senha" maxlength="8" />
+                <input class="input" type="password" name="password" id="password" placeholder="Nova senha" maxlength="8" required-input />
                 <div class="validate-message" id="password-message">
                     <?php
                         if(isset($_SESSION['password-message'])){
@@ -41,7 +41,7 @@
                     ?>
                 </div>
 
-                <input class="input" type="password" name="confirm-password" id="confirm-password" placeholder="Confirme a nova senha" maxlength="8" />
+                <input class="input" type="password" name="confirm-password" id="confirm-password" placeholder="Confirme a nova senha" maxlength="8" required-input/>
                 <div class="validate-message" id="confirm-password-message">
                     <?php
                         if(isset($_SESSION['confirm-password-message'])){

@@ -23,19 +23,19 @@
         <form method="POST" id="form-clients" action="<?php echo BASE_URL; ?>/clientes/addCliente" valid="true">
             
             <label class="label" for="name">Nome completo do cliente</label>
-            <input class="input" type="text" name="name" id="name" autocomplete="off" required-input/>
+            <input class="input" type="text" name="name" id="name" autocomplete="off"/>
             <div class="validate-message" id="name-message"></div>
 
             <label class="label" for="cpf">CPF/CPNJ</label>
-            <input class="input" type="text" name="cpf" id="cpf" autocomplete="off" required-input/>
+            <input class="input" type="text" name="cpf" id="cpf" autocomplete="off"/>
             <div class="validate-message" id="cpf-message"></div>
             
             <label class="label" for="email">E-mail</label>
-            <input class="input" type="email" name="email" id="email" autocomplete="off" required-input/>
+            <input class="input" type="email" name="email" id="email" autocomplete="off"/>
             <div class="validate-message" id="email-message"></div>
 
             <label class="label" for="phone">Telefone de contato</label>
-            <input class="input" type="tel" name="phone" id="phone" autocomplete="off" required-input/>
+            <input class="input" type="tel" name="phone" id="phone" autocomplete="off"/>
             <div class="validate-message" id="phone-message"></div>
 
             <div class="address">
@@ -57,9 +57,7 @@
                 </select>
 
                 <label class="label" for="city">Município</label>
-                <select class="input" name="city" id="city">
-                    <option>Selecione uma opção</option>
-                </select>
+                <select class="input" name="city" id="city"></select>
             </div>
             
             <input class="button" type="submit" value="Cadastrar cliente" />

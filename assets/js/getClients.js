@@ -13,8 +13,6 @@ if (window.location.href == `${BASE_URL}/clientes`) {
     })
     .then(data => {
 
-        console.log(data);
-
         let items = document.querySelector("#home-items");
         let searchInput = document.querySelector("#search");
 
@@ -33,16 +31,16 @@ if (window.location.href == `${BASE_URL}/clientes`) {
                         <p>CPF/CNPJ: ${item.cpf}</p>
                         <p>E-mail: ${item.email}</p>
                         <p>Contato: ${item.phone}</p>
+                        <br>
                         <p>Dados de endereço:</p>
                         <p>Logradouro: ${item.street}, ${item.number} - ${item.district}</p>
                         <p>Cidade/UF: ${item.city}/${item.uf}</p>
                         <p>CEP: ${item.cep}</p>
                     </div>
-                    ${userLogged ? `
                     <div class="item-action">
-                        <a href="${BASE_URL}/home/edit/${item.id}"><button class="button"><img class="icon" src="${BASE_URL}/assets/media/edit.png" /></button></a>
+                        <a href="${BASE_URL}/clientes/edit/${item.id}"><button class="button"><img class="icon" src="${BASE_URL}/assets/media/edit.png" /></button></a>
                         <button onclick="confirmAlert('delete', 'client', ${item.id}, '${item.name}')" class="button"><img class="icon" src="${BASE_URL}/assets/media/trash.png" /></button>
-                    </div>` : ""}
+                    </div>
                 </div>
                 `;
             });
@@ -55,11 +53,10 @@ if (window.location.href == `${BASE_URL}/clientes`) {
 
             const filteredList = data.filter(item => 
                 searchTerms.every(term => 
-                    item.product.toLowerCase().includes(term) ||
-                    item.category.toLowerCase().includes(term) ||
-                    item.brand.toLowerCase().includes(term) ||
-                    item.extra.toLowerCase().includes(term) ||
-                    item.type.toLowerCase().includes(term)
+                    item.name.toLowerCase().includes(term) ||
+                    item.cpf.toLowerCase().includes(term) ||
+                    item.email.toLowerCase().includes(term) ||
+                    item.phone.toLowerCase().includes(term)
                 )
             );            
 
@@ -67,6 +64,6 @@ if (window.location.href == `${BASE_URL}/clientes`) {
         });
     })
     .catch(error => {
-        console.error('Erro na requisição:', error);
+        throw new error("Requisição não realizada!");
     });
 }

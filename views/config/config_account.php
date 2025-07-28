@@ -26,7 +26,7 @@
             <input class="input" type="text" name="user" id="user" placeholder="Nome de usuário" disabled value="<?php echo $_SESSION['user-logged']; ?>"/>
             
             <label class="label" for="email">E-mail</label>
-            <input class="input" type="email" name="email" id="email" placeholder="E-mail" value="<?php echo $_SESSION['email']; ?>"/>
+            <input class="input" type="email" name="email" id="email" placeholder="E-mail" value="<?php echo $_SESSION['email']; ?>" required-input/>
             <div class="validate-message" id="email-message"></div>
             
             <input class="button" type="submit" value="Alterar e-mail" />
@@ -35,11 +35,11 @@
         <form method="POST" id="form-password" action="<?php echo BASE_URL; ?>/configuracoes/updateUser" valid="true">
             
             <label class="label" for="password">Nova senha</label>
-            <input class="input" type="password" name="password" id="password" maxlength="8"/>
+            <input class="input" type="password" name="password" id="password" maxlength="8" required-input/>
             <div class="validate-message" id="password-message"></div>
             
             <label class="label" for="confirm-password">Confirme a nova senha</label>
-            <input class="input" type="password" name="confirm-password" id="confirm-password" maxlength="8" />
+            <input class="input" type="password" name="confirm-password" id="confirm-password" maxlength="8" required-input />
             <div class="validate-message" id="confirm-password-message"></div>
             
             <input class="button" type="submit" value="Alterar senha" />
