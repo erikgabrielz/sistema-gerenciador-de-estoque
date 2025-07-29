@@ -31,7 +31,7 @@
             <div class="validate-message" id="cpf-message"></div>
             
             <label class="label" for="email">E-mail</label>
-            <input class="input" type="email" name="email" id="email" autocomplete="off" required-input/>
+            <input class="input" type="email" name="email" id="email" autocomplete="off"/>
             <div class="validate-message" id="email-message"></div>
 
             <label class="label" for="phone">Telefone de contato</label>

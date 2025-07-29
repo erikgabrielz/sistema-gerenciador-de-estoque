@@ -1,4 +1,4 @@
-if(window.location.href == `${BASE_URL}/clientes/add`){
+if(window.location.href.indexOf("/clientes/add") || window.location.href.indexOf("/clientes/edit")){
 
     function validarCEP(input) {
         const valor = input.value.replace(/\D/g, ''); // Remove tudo que não for número
@@ -19,15 +19,12 @@ if(window.location.href == `${BASE_URL}/clientes/add`){
 
             // Define o texto e o valor da opção
             newOption.text = `${element.sigla} - ${element.nome}`;
-            newOption.value = element.sigla;
+            newOption.value = `${element.sigla}`;
 
             // Adiciona a opção ao select
             uf.appendChild(newOption);
         });
-        
-    }).catch(error => {
-        console.error('Erro na requisição:', error);
-    });
+    })
 
     function getCities(e){
         fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${e.target.value}/municipios`)
@@ -57,4 +54,3 @@ if(window.location.href == `${BASE_URL}/clientes/add`){
         })
     }
 }
-

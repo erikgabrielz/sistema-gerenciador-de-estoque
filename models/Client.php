@@ -7,13 +7,14 @@
         public function getClient($client = "", $user_id){
             $response = false;
 
-            $sql = $this->connect->prepare("SELECT * FROM ".$this->table. " WHERE user_created = :user_id");
-            if(!empty($client)){
-                $sql = $sql." AND id = :client_id";
-                $sql->bindValue(":client_id", $client);
-            }
+            $sql = "SELECT * FROM ".$this->table. " WHERE user_created = ".$user_id;
+
             
-            $sql->bindValue(":user_id", $user_id);
+            if(!empty($client)){
+                $sql = $sql." AND id = ".$client;
+            }
+
+            $sql = $this->connect->prepare($sql);
             $sql->execute();
 
             if($sql->rowCount() > 0){
@@ -35,6 +36,25 @@
             }
 
             $sql->bindValue(":user_created", $_SESSION['id']);
+
+            if($sql->execute()){
+                $response = true;
+            }
+
+            return $response;
+        }
+
+        public function save($data, $id){
+            $response = false;
+
+            $sql = $this->connect->prepare("UPDATE ".$this->table." SET name=:name, cpf=:cpf, email=:email, phone=:phone, cep=:cep, street=:street, number=:number, district=:district, uf=:uf, city=:city WHERE id = :id");
+
+            foreach($data as $key => $value){
+                $key = ":".strtolower($key);
+                $sql->bindValue($key, $value);
+            }
+
+            $sql->bindParam(":id", $id);
 
             if($sql->execute()){
                 $response = true;

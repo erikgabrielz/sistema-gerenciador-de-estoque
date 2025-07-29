@@ -136,6 +136,34 @@
             $this->loadView("clients/edit", $data);
         }
 
+        public function update($id = ""){
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
+            $_SESSION['message'] = [
+                "status" => "error",
+                "text" => "Operação não realizada. Tente novamente!"
+            ];
+
+            if(empty($id)){
+                header("Location: /clientes");
+            }
+
+            $client = new Client();
+            $return = $client->save($_POST, $id);            
+
+            if($return){
+                $_SESSION['message'] = [
+                    "status" => "success",
+                    "text" => "Operação realizada com sucesso!"
+                ];
+            }
+
+            header("Location: /clientes");
+        }
+
         public function delete($id){
             if(!$this->validLogin()){
                 header("Location: /login");

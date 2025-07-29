@@ -54,8 +54,7 @@ $(document).ready(function() {
   });
 });
 
-
-if(window.location.href == `${BASE_URL}/clientes/add`){
+if(window.location.href.indexOf("/clientes/add") || window.location.href.indexOf("/clientes/edit")){
 	{
 		const input = document.getElementById('cpf');
 		const maskOptions = {
