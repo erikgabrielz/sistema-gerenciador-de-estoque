@@ -8,13 +8,37 @@
                 exit(); 
             }
 
-            $start = date('Y-m-01'); // Primeiro dia do mês atual
-            $end = date('Y-m-t');    // Último dia do mês atual
+            $start = date('Y-m-01');          // Primeiro dia do mês atual
+            $end = date('Y-m-d 23:59:59');    // dia atual
+
+            if(!empty($start)){
+                
+            }
 
             if(isset($_POST['start']) && !empty($_POST['start'])){
                 if(isset($_POST['end']) && !empty($_POST['end'])){
                     $start = addslashes($_POST["start"]);
-                    $end = addslashes($_POST["end"]);
+                    $end = addslashes($_POST["end"]." 23:59:59");
+                }
+
+                if($start > $end){
+                    $_SESSION['message'] = [
+                        "status" => "error",
+                        "text" => "A data inicial não pode ser maior do que a data final."
+                    ];
+
+                    header("Location: /financeiro");
+                    exit();
+                }
+
+                if($end > date('Y-m-d 23:59:59')){
+                    $_SESSION['message'] = [
+                        "status" => "error",
+                        "text" => "A data final não pode ser maior do que o dia atual."
+                    ];
+
+                    header("Location: /financeiro");
+                    exit();
                 }
             }
 
