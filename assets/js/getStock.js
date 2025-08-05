@@ -39,7 +39,7 @@ document.body.onload = () => {
                         <div class="item-action">
                             <a href="${BASE_URL}/home/edit/${item.id}"><button class="button"><img class="icon" src="${BASE_URL}/assets/media/edit.png" /></button></a>
                             <button onclick="confirmAlert('delete', 'home', ${item.id}, '${item.category}', '${item.product}')" class="button"><img class="icon" src="${BASE_URL}/assets/media/trash.png" /></button>
-                            ${item.quantity > 0 ? `<button onclick="confirmAlert('sell', ${item.id}, '${item.category}', '${item.product}')" class="button"><img class="icon" src="${BASE_URL}/assets/media/sell.png" /></button>` : ``}
+                            ${item.quantity > 0 ? `<button onclick="confirmAlert('sell', 'home', ${item.id}, '${item.category}', '${item.product}')" class="button"><img class="icon" src="${BASE_URL}/assets/media/sell.png" /></button>` : ``}
                         </div>` : ""}
                     </div>
                     `;

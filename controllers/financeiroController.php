@@ -8,11 +8,21 @@
                 exit(); 
             }
 
+            $start = date('Y-m-01'); // Primeiro dia do mês atual
+            $end = date('Y-m-t');    // Último dia do mês atual
+
+            if(isset($_POST['start']) && !empty($_POST['start'])){
+                if(isset($_POST['end']) && !empty($_POST['end'])){
+                    $start = addslashes($_POST["start"]);
+                    $end = addslashes($_POST["end"]);
+                }
+            }
+
             $stock = new Stock();
             $sale = new Sale();
 
             $data['statistics']["stock"] = $stock->getStatistics();
-            $data['statistics']['sales'] = $sale->getSale();
+            $data['statistics']['sales'] = $sale->getSale($start, $end);
 
             $this->loadView("finance/finance", $data);
         }
