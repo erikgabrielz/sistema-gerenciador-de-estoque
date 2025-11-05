@@ -68,4 +68,11 @@
             $this->loadView("finance/finance", $data);
         }
 
+        public function limparFiltros() {
+            unset($_POST['stat']);
+            unset($_POST['end']);
+
+            header("Location: /financeiro");
+        }
+
     }

@@ -12,8 +12,11 @@
         </div>
     </article>
 
-    <article class="flex center" id="home-search">
+    <article class="flex center column" id="home-search">
         <input class="input" id="search" type="search" placeholder="Pesquisar" />
+        <div class="filter-out-of-stock">
+            <input type="checkbox" id="out-of-stock" /><label for="out-of-stock">Mostrar apenas itens indisponíveis no estoque</label>
+        </div>
     </article>
 
     <?php if(isset($_SESSION['message']) && !empty($_SESSION['message']) && $_SESSION['message']['status'] == "success"): ?>

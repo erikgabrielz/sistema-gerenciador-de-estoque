@@ -1,0 +1,10 @@
+@media only screen and (max-width: 425px){
+    .finance-filter {
+        input{
+            width: 100% !important;
+        }
+        a{
+            max-width: 95% !important;
+        }
+    }
+}

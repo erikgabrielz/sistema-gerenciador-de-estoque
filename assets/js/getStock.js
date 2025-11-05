@@ -48,21 +48,32 @@ document.body.onload = () => {
 
             renderItems(data);
 
-            searchInput.addEventListener("input", () => {
-                const searchTerms = searchInput.value.toLowerCase().split(' ');
+            const applyFilters = () => {
+            const searchTerms = searchInput.value.toLowerCase().split(' ').filter(term => term.trim() !== '');
+            const outOfStockChecked = document.getElementById("out-of-stock").checked;
 
-                const filteredList = data.filter(item => 
-                    searchTerms.every(term => 
-                        item.product.toLowerCase().includes(term) ||
-                        item.category.toLowerCase().includes(term) ||
-                        item.brand.toLowerCase().includes(term) ||
-                        item.extra.toLowerCase().includes(term) ||
-                        item.type.toLowerCase().includes(term)
-                    )
-                );            
+            const filteredList = data.filter(item => {
+                const matchesSearch = searchTerms.length === 0 || searchTerms.every(term =>
+                    item.product.toLowerCase().includes(term) ||
+                    item.category.toLowerCase().includes(term) ||
+                    item.brand.toLowerCase().includes(term) ||
+                    item.extra.toLowerCase().includes(term) ||
+                    item.type.toLowerCase().includes(term)
+                );
 
-                renderItems(filteredList);
+                const matchesStock = !outOfStockChecked || item.quantity === 0;
+
+                return matchesSearch && matchesStock;
             });
+
+            renderItems(filteredList);
+            };
+
+            // Escuta tanto o input quanto o checkbox
+            searchInput.addEventListener("input", applyFilters);
+            document.getElementById("out-of-stock").addEventListener("change", applyFilters);
+
+
         })
         .catch(error => {
             console.error('Erro na requisição:', error);

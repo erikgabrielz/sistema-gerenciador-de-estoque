@@ -8,6 +8,15 @@
     max-width: var(--max-width);
 }
 
+#home-search .filter-out-of-stock {
+    padding: 10px 0;
+
+    label {
+        color: white;
+        margin-left: 10px;
+    }
+}
+
 .item-action .button{
     width: 100px;
 }
