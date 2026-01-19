@@ -10,14 +10,14 @@
         </div>
     </article>
 
-    <article class="flex center column" id="orders-items">
+    <article id="orders-items">
         <div class="item">
             <div class="item-desc">
                 <h3 class="item-title">Ordem de serviço #111</h3>
                 <p class="item-amount">troca de microfone</p>
                 <p class="item-price">valor do orçamento: R$ 70,00</p>
             </div>
-            <div class="item-action flex center end">
+            <div class="item-action">
                 <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/edit.png" /></button></a>
                 <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/verification.png" /></button></a>
             </div>
@@ -30,9 +30,13 @@
                 <p class="item-price">valor do orçamento: R$ 250,00</p>
             </div>
 
-            <div class="item-action flex center end">
-                <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/edit.png" /></button></a>
+            <div class="item-action">
+                <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/eye.png" /></button></a>
                 <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/verification.png" /></button></a>
+                <a><button class="button"><img class="icon" src="/assets/media/close.png" /></button></a>
+                <a><button class="button"><img class="icon" src="/assets/media/trash.png" /></button></a>
+                <a href="#"><button class="button"><img class="icon" src="<?php echo BASE_URL; ?>/assets/media/edit.png" /></button></a>
+
             </div>
         </div>
     </article>

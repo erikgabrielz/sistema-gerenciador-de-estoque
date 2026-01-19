@@ -9,8 +9,8 @@
 }
 
 #home-search .filter-out-of-stock {
-    padding: 10px 0;
-
+    padding: 15px;
+    text-align: center;
     label {
         color: white;
         margin-left: 10px;

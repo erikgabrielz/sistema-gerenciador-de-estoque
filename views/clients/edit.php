@@ -29,7 +29,7 @@
             <div class="validate-message" id="name-message"></div>
 
             <label class="label" for="cpf">CPF/CPNJ</label>
-            <input class="input" type="text" name="cpf" id="cpf" autocomplete="off" value="<?php echo $client[0]['cpf']; ?>" required-input/>
+            <input class="input" type="text" name="cpf" id="cpf" autocomplete="off" value="<?php echo $client[0]['cpf']; ?>" required-input disabled/>
             <div class="validate-message" id="cpf-message"></div>
             
             <label class="label" for="email">E-mail</label>

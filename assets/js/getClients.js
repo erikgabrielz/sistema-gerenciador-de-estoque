@@ -25,7 +25,7 @@ if (window.location.href == `${BASE_URL}/clientes`) {
             items.innerHTML = "";
             filteredList.forEach(item => {            
                 items.innerHTML += `
-                <div class="item flex center justify">
+                <div class="item flex center justify wrap">
                     <div class="item-desc">
                         <h3 class="item-title">${item.name}</h3>
                         <p>CPF/CNPJ: ${item.cpf}</p>

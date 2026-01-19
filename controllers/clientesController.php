@@ -152,7 +152,7 @@
             }
 
             $client = new Client();
-            $return = $client->save($_POST, $id);            
+            $return = $client->save($_POST, $id);
 
             if($return){
                 $_SESSION['message'] = [
@@ -188,6 +188,30 @@
             }
 
             header("Location: /clientes");
+        }
+
+        public function verifyCPF($cpf){
+            if(!$this->validLogin()){
+                header("Location: /login");
+                exit(); 
+            }
+
+            $client = new Client();
+            $result = $client->consultCPF($cpf);
+
+            $response = [
+                "status" => 200,
+                "body" => false
+            ];
+
+            if($result){
+                $response = [
+                    "status" => 200,
+                    "body" => true
+                ];
+            }
+        
+            echo json_encode($response);
         }
     }
 ?>

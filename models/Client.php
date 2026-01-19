@@ -47,7 +47,7 @@
         public function save($data, $id){
             $response = false;
 
-            $sql = $this->connect->prepare("UPDATE ".$this->table." SET name=:name, cpf=:cpf, email=:email, phone=:phone, cep=:cep, street=:street, number=:number, district=:district, uf=:uf, city=:city WHERE id = :id");
+            $sql = $this->connect->prepare("UPDATE ".$this->table." SET name=:name, email=:email, phone=:phone, cep=:cep, street=:street, number=:number, district=:district, uf=:uf, city=:city WHERE id = :id");
 
             foreach($data as $key => $value){
                 $key = ":".strtolower($key);
@@ -77,6 +77,21 @@
                 if($sql->execute()){
                     $response = true;
                 }
+            }
+
+            return $response;
+        }
+
+        public function consultCPF($cpf){
+            $response = false;
+
+            $sql = $this->connect->prepare("SELECT cpf from ".$this->table." WHERE cpf = :cpf");
+            $sql->bindParam(":cpf", $cpf);
+
+            $sql->execute();
+
+            if($sql->rowCount() > 0){
+                $response = true;
             }
 
             return $response;
