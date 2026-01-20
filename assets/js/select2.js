@@ -54,6 +54,21 @@ $(document).ready(function() {
   });
 });
 
+$(document).ready(function() {
+  $('#name').select2({
+    placeholder: "Selecione uma opção",
+    allowClear: false
+  });
+});
+
+$(document).ready(function() {
+  $('#model').select2({
+    placeholder: "Selecione uma opção",
+    allowClear: false
+  });
+});
+
+
 if(window.location.href.indexOf("/clientes/add") || window.location.href.indexOf("/clientes/edit")){
 	{
 		const input = document.getElementById('cpf');
